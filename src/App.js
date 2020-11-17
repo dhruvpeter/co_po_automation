@@ -7,6 +7,7 @@ import Student from './Component/Student/Student'
 export default function App() {
   return (
     <div>
+      <Admin/>
     </div>
   )
 }

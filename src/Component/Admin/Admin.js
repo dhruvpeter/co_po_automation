@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import NavigationBar from "./NavigationBar/NavigationBar";
+
 
 export default function Admin() {
-    return (
-        <div>
-            Admin Component
-        </div>
-    )
+  return (
+    <div>
+      <NavigationBar/>
+      Admin Component
+    </div>
+  );
 }
