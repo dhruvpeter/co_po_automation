@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Faculty() {
+export default function AssignFaculty() {
     return (
         <div>
-            Faculty Component
+            AssignFaculty
         </div>
     )
 }
