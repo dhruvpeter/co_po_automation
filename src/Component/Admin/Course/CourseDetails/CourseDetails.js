@@ -1,8 +1,20 @@
 import React, { useState } from "react";
-import { Table } from "react-bootstrap";
-import "./CourseDetails.css"
+import { Table, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./CourseDetails.css";
+
 export default function CourseDetails() {
   const course = [
+    {
+      code: "PH100",
+      name: "Engineering Physics",
+      semester: "S1",
+    },
+    {
+      code: "PH100",
+      name: "Engineering Physics",
+      semester: "S1",
+    },
     {
       code: "PH100",
       name: "Engineering Physics",
@@ -29,38 +41,46 @@ export default function CourseDetails() {
   });
   return (
     <div className="container-fluid">
-        <div className="filter">
-          <label>
-            <select value={filterTag} onChange={handleChangeFilterTag}>
-              {semester.map((data, index) => (
-                <option key={index} value={data}>
-                  {data}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
+      <div className="filter">
+        <label>
+          <select value={filterTag} onChange={handleChangeFilterTag}>
+            {semester.map((data, index) => (
+              <option key={index} value={data}>
+                {data}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
 
-        <div className="table">
-          <Table striped bordered hover variant="dark">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Course Code</th>
-                <th>Course Name</th>
+      <div className="table">
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Course Code</th>
+              <th>Course Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredCourse.map((data, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{data.code}</td>
+                <td>{data.name}</td>
+                <td>
+                  <Button variant="light">
+                    <Link to="/admin/course/course-details/selected-course">
+                      View
+                    </Link>
+                  </Button>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {filteredCourse.map((data, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{data.code}</td>
-                  <td>{data.name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-        </div>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 }
