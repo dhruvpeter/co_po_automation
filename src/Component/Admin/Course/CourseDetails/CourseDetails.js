@@ -62,12 +62,14 @@ export default function CourseDetails() {
   const filteredCourseWithSem = course.filter(function (course) {
     return course.semester === filterSem;
   });
-  const filteredCourseWithSemAndBatchYear = filteredCourseWithSem.filter(function (course) {
-    return course.batchYear === filterBatchYear;
-  });
+  const filteredCourseWithSemAndBatchYear = filteredCourseWithSem.filter(
+    function (course) {
+      return course.batchYear === filterBatchYear;
+    }
+  );
   return (
     <div className="container-fluid">
-      <div className="filter-sem">
+      <div className="filter">
         <label>
           <select value={filterSem} onChange={handleChangeFilterSem}>
             {semester.map((data, index) => (
@@ -77,10 +79,10 @@ export default function CourseDetails() {
             ))}
           </select>
         </label>
-      </div>
-      <div className="filter-batchYear">
         <label>
-          <select value={filterBatchYear} onChange={handleChangeFilterBatchYear}>
+          <select
+            value={filterBatchYear}
+            onChange={handleChangeFilterBatchYear}>
             {batchYear.map((data, index) => (
               <option key={index} value={data}>
                 {data}
