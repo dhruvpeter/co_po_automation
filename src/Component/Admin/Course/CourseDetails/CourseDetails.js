@@ -69,6 +69,7 @@ export default function CourseDetails() {
   );
   return (
     <div className="container-fluid">
+      <div><h3>Course Details</h3></div>
       <div className="filter">
         <label>
           <select value={filterSem} onChange={handleChangeFilterSem}>
