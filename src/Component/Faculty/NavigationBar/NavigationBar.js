@@ -11,7 +11,7 @@ export default function NavigationBar() {
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Selected Course" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/faculty/selected-course">
+              <NavDropdown.Item href="">
                 Selected Course
               </NavDropdown.Item>
             </NavDropdown>
