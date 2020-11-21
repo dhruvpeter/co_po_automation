@@ -5,17 +5,10 @@ import ViewStudent from "../Student/ViewStudent/ViewStudent";
 import AddMark from "../Student/AddMark/AddMark";
 import AssignStudent from "../Student/AssignStudent/AssignStudent";
 import Profile from "../Profile/Profile";
-import SelectedCourse from "../../Admin/Course/CourseDetails/SelectedCourse/SelectedCourse";
-export default function AdminLinks() {
+export default function FacultyLinks() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route
-          path="/faculty/selected-course"
-          exact
-          component={SelectedCourse}
-        />
         <Route
           path="/faculty/student/add-mark"
           exact
@@ -31,7 +24,7 @@ export default function AdminLinks() {
           exact
           component={AssignStudent}
         />
-        <Route path="/admin/profile" exact component={Profile} />
+        <Route path="/faculty/profile" exact component={Profile} />
       </Switch>
     </Router>
   );
