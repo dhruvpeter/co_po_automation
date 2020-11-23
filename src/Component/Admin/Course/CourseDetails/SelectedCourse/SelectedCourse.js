@@ -56,11 +56,6 @@ export default function SelectedCourse() {
     faculty: "",
   });
 
-  const handleChange = (event) => {
-    setCourse(event.target.value);
-    console.log(course.name);
-  };
-
   return (
     <div className="container-fluid">
       <div className="form">
@@ -80,7 +75,12 @@ export default function SelectedCourse() {
               type="text"
               name="Course name"
               value={course.name}
-              onChange={handleChange}
+              onChange={e => {
+                setCourse({
+                ...course,
+                name: e.target.value,
+              })
+              console.log(course)}}
             />
           </Form.Group>
           {/* <Form.Group>
