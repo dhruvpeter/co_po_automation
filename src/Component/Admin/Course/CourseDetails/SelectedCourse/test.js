@@ -1,55 +1,54 @@
 import React from "react";
 // import { Table } from "react-bootstrap";
 import { Form } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 
 export default function SelectedCourse() {
-  //   const coPoMatrix = [
-  //     {
-  //       po1: "1",
-  //       po2: "2",
-  //       po3: "3",
-  //       po4: "1",
-  //       po5: "2",
-  //       po6: "3",
-  //       po7: "2",
-  //       po8: "1",
-  //       po9: "1",
-  //       po10: "1",
-  //       po11: "1",
-  //       po12: "1",
-  //     },
-  //     {
-  //       po1: "2",
-  //       po2: "3",
-  //       po3: "3",
-  //       po4: "0",
-  //       po5: "0",
-  //       po6: "0",
-  //       po7: "2",
-  //       po8: "3",
-  //       po9: "1",
-  //       po10: "2",
-  //       po11: "3",
-  //       po12: "1",
-  //     },
-  //   ];
+//   const coPoMatrix = [
+//     {
+//       po1: "1",
+//       po2: "2",
+//       po3: "3",
+//       po4: "1",
+//       po5: "2",
+//       po6: "3",
+//       po7: "2",
+//       po8: "1",
+//       po9: "1",
+//       po10: "1",
+//       po11: "1",
+//       po12: "1",
+//     },
+//     {
+//       po1: "2",
+//       po2: "3",
+//       po3: "3",
+//       po4: "0",
+//       po5: "0",
+//       po6: "0",
+//       po7: "2",
+//       po8: "3",
+//       po9: "1",
+//       po10: "2",
+//       po11: "3",
+//       po12: "1",
+//     },
+//   ];
 
-  //   const coPsoMatrix = [
-  //     {
-  //       pso1: "1",
-  //       pso2: "2",
-  //       pso3: "3",
-  //     },
-  //     {
-  //       pso1: "2",
-  //       pso2: "3",
-  //       pso3: "3",
-  //     },
-  //   ];
+//   const coPsoMatrix = [
+//     {
+//       pso1: "1",
+//       pso2: "2",
+//       pso3: "3",
+//     },
+//     {
+//       pso1: "2",
+//       pso2: "3",
+//       pso3: "3",
+//     },
+//   ];
 
-  const [course, setCourse] = useState({
+  const [course,setCourse] = useState({
     name: "",
     code: "",
     semester: "",
@@ -60,7 +59,7 @@ export default function SelectedCourse() {
     setCourse(event.target.value);
     console.log(course.name);
   };
-
+  
   return (
     <div className="container-fluid">
       <div className="form">

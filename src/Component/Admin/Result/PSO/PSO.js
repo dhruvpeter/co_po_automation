@@ -2,11 +2,6 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 export default function PSO() {
-    return (
-        <div>
-            PSO
-        </div>
-    )
   const pso = [
     {
       admissionYear: "2015",
