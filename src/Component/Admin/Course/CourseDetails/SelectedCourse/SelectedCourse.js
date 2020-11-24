@@ -74,6 +74,7 @@ export default function SelectedCourse() {
       coursecode: "",
       semester: "",
       faculty: "",
+      p0: 1,
     });
    
     const handleChange = (event) => {
@@ -89,11 +90,11 @@ export default function SelectedCourse() {
             <Form>
                 <Form.Group>
                     <Form.Label>Course Code</Form.Label>
-                    <input type="email" placeholder="Course code" name="Course Code" value={value.coursename} onChange={handleChange} />
+                    <Form.Control type="email" placeholder="Course code" name="Course Code" value={value.coursecode} onChange={handleChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Course Name</Form.Label>
-                    <Form.Control type="text" placeholder="Course name" name="Course name" value={value.coursecode} onChange={handleChange} />
+                    <Form.Control type="text" placeholder="Course name" name="Course name" value={value.coursename} onChange={handleChange} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Semester</Form.Label>
@@ -123,7 +124,7 @@ export default function SelectedCourse() {
               {copomatrix.map((data, index) => (
                 <tr key={index}>
                 <td>CO{index + 1}</td>
-                <td><Form.Control placeholder={data.p1} /></td>
+                <td><Form.Control value={value.p0} onChange={handleChange} /></td>
                 <td><Form.Control placeholder={data.p2} /></td>
                 <td><Form.Control placeholder={data.p3} /></td>
                 <td><Form.Control placeholder={data.p4} /></td>
