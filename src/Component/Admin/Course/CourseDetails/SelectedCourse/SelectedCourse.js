@@ -1,40 +1,38 @@
-import React from "react";
-// import { Table } from "react-bootstrap";
-import { Form } from "react-bootstrap";
+import React,{ useState } from "react";
+import { Table, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
 
 export default function SelectedCourse() {
-  //   const coPoMatrix = [
-  //     {
-  //       po1: "1",
-  //       po2: "2",
-  //       po3: "3",
-  //       po4: "1",
-  //       po5: "2",
-  //       po6: "3",
-  //       po7: "2",
-  //       po8: "1",
-  //       po9: "1",
-  //       po10: "1",
-  //       po11: "1",
-  //       po12: "1",
-  //     },
-  //     {
-  //       po1: "2",
-  //       po2: "3",
-  //       po3: "3",
-  //       po4: "0",
-  //       po5: "0",
-  //       po6: "0",
-  //       po7: "2",
-  //       po8: "3",
-  //       po9: "1",
-  //       po10: "2",
-  //       po11: "3",
-  //       po12: "1",
-  //     },
-  //   ];
+  const coPoMatrix = [
+    {
+      po1: "1",
+      po2: "2",
+      po3: "3",
+      po4: "1",
+      po5: "2",
+      po6: "3",
+      po7: "2",
+      po8: "1",
+      po9: "1",
+      po10: "1",
+      po11: "1",
+      po12: "1",
+    },
+    {
+      po1: "2",
+      po2: "3",
+      po3: "3",
+      po4: "0",
+      po5: "0",
+      po6: "0",
+      po7: "2",
+      po8: "3",
+      po9: "1",
+      po10: "2",
+      po11: "3",
+      po12: "1",
+    },
+  ];
 
   //   const coPsoMatrix = [
   //     {
@@ -50,61 +48,71 @@ export default function SelectedCourse() {
   //   ];
 
   const [course, setCourse] = useState({
-    name: "",
-    code: "",
-    semester: "",
-    faculty: "",
+    name: "Engineerting Physics",
+    code: "PH100",
+    semester: "S1",
+    faculty: "Faculty Name",
   });
 
   return (
     <div className="container-fluid">
       <div className="form">
         <Form>
-          {/* <Form.Group>
+          <Form.Group>
             <Form.Label>Course Code</Form.Label>
             <Form.Control
               type="text"
-              name="Course Code"
+              name="code"
               value={course.code}
-              onChange={handleChange}
+              onChange={(e) => {
+                setCourse({
+                  ...course,
+                  code: e.target.value,
+                });
+              }}
             />
-          </Form.Group> */}
+          </Form.Group>
           <Form.Group>
             <Form.Label>Course Name</Form.Label>
             <Form.Control
               type="text"
-              name="Course name"
+              name="name"
               value={course.name}
-              onChange={e => {
+              onChange={(e) => {
                 setCourse({
-                ...course,
-                name: e.target.value,
-              })
-              console.log(course)}}
+                  ...course,
+                  name: e.target.value,
+                });
+              }}
             />
           </Form.Group>
-          {/* <Form.Group>
+          <Form.Group>
             <Form.Label>Semester</Form.Label>
             <Form.Control
               type="text"
-              name="Semester"
+              name="semester"
               value={course.semester}
-              onChange={handleChange}
+              onChange={(e) => {
+                setCourse({
+                  ...course,
+                  semester: e.target.value,
+                });
+              }}
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>Faculty </Form.Label>
             <Form.Control
               type="text"
-              name="Faculty Name"
+              name="faculty"
               value={course.faculty}
-              onChange={handleChange}
+              readOnly
             />
-          </Form.Group> */}
+          </Form.Group>
         </Form>
       </div>
 
-      {/* <div className="table">
+      <div className="table">
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
@@ -115,52 +123,51 @@ export default function SelectedCourse() {
             </tr>
           </thead>
           <tbody>
-            {copomatrix.map((data, index) => (
+            {coPoMatrix.map((data, index) => (
               <tr key={index}>
                 <td>CO{index + 1}</td>
                 <td>
-                  <Form.Control placeholder={data.p1} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p2} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p3} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p4} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p5} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p6} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p7} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p8} />
+                  <Form.Control />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p9} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p10} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p11} />
+                  <Form.Control  />
                 </td>
                 <td>
-                  <Form.Control placeholder={data.p12} />
+                  <Form.Control  />
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
       </div>
-
-      <div className="table">
+      {/* <div className="table">
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
