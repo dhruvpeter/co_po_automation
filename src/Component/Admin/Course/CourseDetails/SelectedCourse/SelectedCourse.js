@@ -51,7 +51,8 @@ export default function SelectedCourse() {
     name: "Engineerting Physics",
     code: "PH100",
     semester: "S1",
-    faculty: "Faculty Name",
+    faculty: ["Faculty Name", "f2"],
+    p1c1: "1",
   });
 
   return (
@@ -102,12 +103,15 @@ export default function SelectedCourse() {
           </Form.Group>
           <Form.Group>
             <Form.Label>Faculty </Form.Label>
-            <Form.Control
-              type="text"
-              name="faculty"
-              value={course.faculty}
-              readOnly
-            />
+              {course.faculty.map((data, index) => (
+                <Form.Control
+                  key={index}
+                  type="text"
+                  name="faculty"
+                  value={data}
+                  readOnly
+                />
+              ))}
           </Form.Group>
         </Form>
       </div>
@@ -127,7 +131,7 @@ export default function SelectedCourse() {
               <tr key={index}>
                 <td>CO{index + 1}</td>
                 <td>
-                  <Form.Control  />
+                <Form.Control />
                 </td>
                 <td>
                   <Form.Control  />
