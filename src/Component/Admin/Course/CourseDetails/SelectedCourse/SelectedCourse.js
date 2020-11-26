@@ -102,15 +102,15 @@ export default function SelectedCourse() {
           </Form.Group>
           <Form.Group>
             <Form.Label>Faculty </Form.Label>
-            {course.faculty.map((data, index) => (
-              <Form.Control
-                key={index}
-                type="text"
-                name="faculty"
-                value={data}
-                readOnly
-              />
-            ))}
+              {course.faculty.map((data, index) => (
+                <Form.Control
+                  key={index}
+                  type="text"
+                  name="faculty"
+                  value={data}
+                  readOnly
+                />
+              ))}
           </Form.Group>
         </Form>
       </div>
@@ -130,7 +130,7 @@ export default function SelectedCourse() {
               <tr key={index}>
                 <td>CO{index + 1}</td>
                 <td>
-                  <Form.Control />
+                <Form.Control />
                 </td>
                 <td>
                   <Form.Control />
