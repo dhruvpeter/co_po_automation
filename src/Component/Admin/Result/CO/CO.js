@@ -7,15 +7,7 @@ export default function CO() {
       semester: "S1",
     },
     {
-      name: "Engineering Chemistry",
-      semester: "S1",
-    },
-    {
       name: "Data Structures",
-      semester: "S3",
-    },
-    {
-      name: "EDC",
       semester: "S3",
     },
     {
@@ -90,7 +82,9 @@ export default function CO() {
   const handleChangeFilterSem = (event) => {
     setFilterSem(event.target.value);
   };
+
   const [filterCourse, setFilterCourse] = useState("----");
+
   const handleChangeFilterCourse = (event) => {
     setFilterCourse(event.target.value);
   };
@@ -100,7 +94,7 @@ export default function CO() {
   const filteredCoWithSemAndCourse = co.filter(function (co) {
     return co.courseName === filterCourse;
   });
-  console.log({ filteredCoWithSemAndCourse });
+  console.log({filteredCourseWithSem});
   return (
     <div className="container-fluid">
       <div>
@@ -117,9 +111,10 @@ export default function CO() {
           </select>
         </label>
         <label>
-          <select value={filterCourse} onChange={handleChangeFilterCourse}>
+          <select value={filterCourse} onChange={handleChangeFilterCourse} >
+            <option key={"Select"} value="Select">Select Course</option>
             {filteredCourseWithSem.map((data, index) => (
-              <option key={index} value={data}>
+              <option key={index} value={data.name}>
                 {data.name}
               </option>
             ))}
