@@ -59,6 +59,19 @@ export default function AssignFaculty() {
 
     setFaculty({ ...faculty, course: courseAfterDelete });
   };
+  function Submit(e) {
+    e.preventDefault();
+    console.log("Submit Button clicked.");
+  }
+
+  function Delete(e) {
+    e.preventDefault();
+    console.log("Delete Button clicked.");
+  }
+  function Back(e) {
+    e.preventDefault();
+    console.log("Back Button clicked.");
+  }
   return (
     <div className="container-fluid">
       <div className="form">
@@ -128,6 +141,17 @@ export default function AssignFaculty() {
             ))}
           </tbody>
         </Table>
+      </div>
+      <div>
+        <Button variant="dark" onClick={Back}>
+          Back
+        </Button>{" "}
+        <Button variant="dark" onClick={Delete}>
+          Delete
+        </Button>{" "}
+        <Button variant="dark" onClick={Submit}>
+          Save
+        </Button>
       </div>
     </div>
   );
