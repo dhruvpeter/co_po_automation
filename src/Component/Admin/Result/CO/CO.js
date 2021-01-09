@@ -20,7 +20,7 @@ export default function CO() {
       admissionYear: "2015",
       co1: "1",
       co2: "2",
-      co3: "1",
+      co3: "3",
       co4: "2",
       co5: "1",
       co6: "2",
@@ -43,7 +43,7 @@ export default function CO() {
       co3: "1",
       co4: "2",
       co5: "1",
-      co6: "2",
+      co6: "3",
       courseName: "Data Structures",
     },
     {
