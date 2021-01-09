@@ -1,110 +1,105 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
+
 export default function CO() {
-  const course = [
-    {
-      name: "Engineering Physics",
-      semester: "S1",
-    },
-    {
-      name: "Engineering Chemistry",
-      semester: "S1",
-    },
-    {
-      name: "Data Structures",
-      semester: "S3",
-    },
-    {
-      name: "EDC",
-      semester: "S3",
-    },
-    {
-      name: "Theory of Computation",
-      semester: "S5",
-    },
-  ];
   const co = [
     {
-      admissionYear: "2015",
+      batchYear: "2016",
       co1: "1",
       co2: "2",
       co3: "1",
       co4: "2",
       co5: "1",
       co6: "2",
-      courseName: "Engineering Physics",
+      coursename: "TOC",
     },
     {
-      admissionYear: "2016",
+      batchYear: "2017",
       co1: "1",
       co2: "2",
       co3: "1",
       co4: "2",
       co5: "1",
       co6: "2",
-      courseName: "Engineering Physics",
+      coursename: "TOC",
     },
     {
-      admissionYear: "2015",
+      batchYear: "2018",
       co1: "1",
       co2: "2",
       co3: "1",
       co4: "2",
       co5: "1",
       co6: "2",
-      courseName: "Data Structures",
+      coursename: "DC",
     },
     {
-      admissionYear: "2016",
+      batchYear: "2019",
       co1: "1",
       co2: "2",
       co3: "1",
       co4: "2",
       co5: "1",
       co6: "2",
-      courseName: "Data Structures",
+      coursename: "DC",
     },
     {
-      admissionYear: "2015",
+      batchYear: "2019",
       co1: "1",
       co2: "2",
       co3: "1",
       co4: "2",
       co5: "1",
       co6: "2",
-      courseName: "Theory of Computation",
+      coursename: "CHEM",
     },
     {
-      admissionYear: "2016",
+      batchYear: "2020",
       co1: "1",
       co2: "2",
       co3: "1",
       co4: "2",
       co5: "1",
       co6: "2",
-      courseName: "Theory of Computation",
+      coursename: "CHEM",
     },
   ];
   const semester = ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"];
+  const course = [
+    {
+      coursename: "TOC",
+      semester: "S5",
+    },
+    {
+      coursename: "DC",
+      semester: "S5",
+    },
+    {
+      coursename: "CHEM",
+      semester: "S1",
+    },
+  ];
   const [filterSem, setFilterSem] = useState("S1");
   const handleChangeFilterSem = (event) => {
     setFilterSem(event.target.value);
   };
-  const [filterCourse, setFilterCourse] = useState("----");
+
+  const [filterCourse, setFilterCourse] = useState("--");
   const handleChangeFilterCourse = (event) => {
     setFilterCourse(event.target.value);
   };
+
   const filteredCourseWithSem = course.filter(function (course) {
     return course.semester === filterSem;
   });
+
   const filteredCoWithSemAndCourse = co.filter(function (co) {
-    return co.courseName === filterCourse;
+    return co.coursename === filterCourse;
   });
-  console.log({ filteredCoWithSemAndCourse });
   return (
     <div className="container-fluid">
       <div>
-        <h3>CO Attainment</h3>
+        <h3>CO</h3>
       </div>
       <div className="filter">
         <label>
@@ -119,39 +114,45 @@ export default function CO() {
         <label>
           <select value={filterCourse} onChange={handleChangeFilterCourse}>
             {filteredCourseWithSem.map((data, index) => (
-              <option key={index} value={data}>
-                {data.name}
+              <option key={index} value={data.coursename}>
+                {data}
               </option>
             ))}
           </select>
         </label>
       </div>
-      <Table striped bordered hover variant="dark" responsive>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Year of admission</th>
 
-            {Array.from({ length: 6 }).map((_, index) => (
-              <th key={index}>CO{index + 1}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {filteredCoWithSemAndCourse.map((data, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{data.admissionYear}</td>
-              <td>{data.co1}</td>
-              <td>{data.co2}</td>
-              <td>{data.co3}</td>
-              <td>{data.co4}</td>
-              <td>{data.co5}</td>
-              <td>{data.co6}</td>
+      <div className="table">
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Year</th>
+              <th>CO1</th>
+              <th>CO2</th>
+              <th>CO3</th>
+              <th>CO4</th>
+              <th>CO5</th>
+              <th>CO6</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {filteredCoWithSemAndCourse.map((data, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{data.batchYear}</td>
+                <td>{data.c1}</td>
+                <td>{data.c2}</td>
+                <td>{data.c3}</td>
+                <td>{data.c4}</td>
+                <td>{data.c5}</td>
+                <td>{data.c6}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 }
