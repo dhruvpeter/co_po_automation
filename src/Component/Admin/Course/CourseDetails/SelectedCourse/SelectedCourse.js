@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Table, Form } from "react-bootstrap";
+import { Table, Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function SelectedCourse() {
@@ -7,19 +7,23 @@ export default function SelectedCourse() {
       [1, 2, 3, 1, 2, 3, 2, 1, 1, 1, 1, 1],
       [2, 3, 3, 0, 0, 0, 2, 3, 1, 2, 3, 1],
   ]);
+  
+  const [CoPsoMatrix, setCoPsoMatrix] = useState([
+    [1, 2, 3, 1, 2, 3],
+    [2, 3, 3, 0, 0, 0],
+]);
 
-  //   const coPsoMatrix = [
-  //     {
-  //       pso1: "1",
-  //       pso2: "2",
-  //       pso3: "3",
-  //     },
-  //     {
-  //       pso1: "2",
-  //       pso2: "3",
-  //       pso3: "3",
-  //     },
-  //   ];
+
+function Submit(e) {
+  e.preventDefault();
+  console.log('Submit Button clicked.');
+  }
+
+  function Delete(e) {
+      e.preventDefault();
+      console.log('Delete Button clicked.');
+      }    
+ 
 
   const [course, setCourse] = useState({
     name: "Engineerting Physics",
@@ -32,6 +36,12 @@ export default function SelectedCourse() {
     var resultMatrix = CoPoMatrix;
     resultMatrix[index][i] = Number(po);
     setCoPoMatrix(resultMatrix);
+  }
+
+  const handlePSOChange = (pso, index, i) => {
+    var resultMatrixPSO = CoPsoMatrix;
+    resultMatrixPSO[index][i] = Number(pso);
+    setCoPsoMatrix(resultMatrixPSO);
   }
 
   return (
@@ -119,6 +129,38 @@ export default function SelectedCourse() {
           </tbody>
         </Table>
       </div>
+
+
+      <div className="table">
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>#</th>
+              {Array.from({ length: 6 }).map((_, index) => (
+                <th key={index}>PSO{index + 1}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {CoPsoMatrix.map((data, index) => (
+              <tr key={index}>
+                <td>CO{index + 1}</td>
+                {data.map((pso, i) => (
+                  <td key={i}>
+                    <Form.Control type="text" name="PSO" placeholder={pso} onChange={(e)  => handlePSOChange(e.target.value, index, i)}/>
+                  </td> 
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
+
+      <div>       
+      <Button variant="primary" onClick={Delete}>Delete</Button>{' '}
+      <Button variant="primary" onClick={Submit}>Save</Button>
+      </div> 
+
     </div>
   );
 }
