@@ -58,7 +58,7 @@ class AddStudent extends Component {
   
       <div>      
       <h1>     </h1> 
-      <Button variant="primary" onClick={Submit}>Save</Button>
+      <Button variant="primary" onClick={Submit}>Upload</Button>
       </div> 
      </div> 
       );

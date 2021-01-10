@@ -60,7 +60,7 @@ class AddMark extends Component {
       </div>
 
     <div>       
-    <Button variant="primary" onClick={Submit}>Save</Button>
+    <Button variant="primary" onClick={Submit}>Upload</Button>
     </div> 
    </div> 
     );
