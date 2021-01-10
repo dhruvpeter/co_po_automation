@@ -150,7 +150,7 @@ export default function AddCourse() {
       </div>
 
       <div>
-        <Button variant="primary" onClick={Submit}>
+        <Button variant="dark" onClick={Submit}>
           Save
         </Button>
       </div>

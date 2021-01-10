@@ -167,10 +167,10 @@ export default function SelectedCourse() {
       </div>
 
       <div>
-        <Button variant="primary" onClick={Delete}>
+        <Button variant="dark" onClick={Delete}>
           Delete
         </Button>{" "}
-        <Button variant="primary" onClick={Submit}>
+        <Button variant="dark" onClick={Submit}>
           Save
         </Button>
       </div>
