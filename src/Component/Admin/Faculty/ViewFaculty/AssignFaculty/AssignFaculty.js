@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Table, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function AssignFaculty() {
@@ -144,7 +145,7 @@ export default function AssignFaculty() {
       </div>
       <div>
         <Button variant="dark" onClick={Back}>
-          Back
+          <Link to="/admin/faculty/view-faculty" >Back</Link>
         </Button>{" "}
         <Button variant="dark" onClick={Delete}>
           Delete
