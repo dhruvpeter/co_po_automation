@@ -4,26 +4,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function SelectedCourse() {
   const [CoPoMatrix, setCoPoMatrix] = useState([
-      [1, 2, 3, 1, 2, 3, 2, 1, 1, 1, 1, 1],
-      [2, 3, 3, 0, 0, 0, 2, 3, 1, 2, 3, 1],
+    [1, 2, 3, 1, 2, 3, 2, 1, 1, 1, 1, 1],
+    [2, 3, 3, 0, 0, 0, 2, 3, 1, 2, 3, 1],
   ]);
-  
+
   const [CoPsoMatrix, setCoPsoMatrix] = useState([
     [1, 2, 3, 1, 2, 3],
     [2, 3, 3, 0, 0, 0],
-]);
+  ]);
 
-
-function Submit(e) {
-  e.preventDefault();
-  console.log('Submit Button clicked.');
+  function Submit(e) {
+    e.preventDefault();
+    console.log("Submit Button clicked.");
   }
 
   function Delete(e) {
-      e.preventDefault();
-      console.log('Delete Button clicked.');
-      }    
- 
+    e.preventDefault();
+    console.log("Delete Button clicked.");
+  }
 
   const [course, setCourse] = useState({
     name: "Engineerting Physics",
@@ -36,13 +34,13 @@ function Submit(e) {
     var resultMatrix = CoPoMatrix;
     resultMatrix[index][i] = Number(po);
     setCoPoMatrix(resultMatrix);
-  }
+  };
 
   const handlePSOChange = (pso, index, i) => {
     var resultMatrixPSO = CoPsoMatrix;
     resultMatrixPSO[index][i] = Number(pso);
     setCoPsoMatrix(resultMatrixPSO);
-  }
+  };
 
   return (
     <div className="container-fluid">
@@ -92,20 +90,21 @@ function Submit(e) {
           </Form.Group>
           <Form.Group>
             <Form.Label>Faculty </Form.Label>
-              {course.faculty.map((data, index) => (
-                <Form.Control
-                  key={index}
-                  type="text"
-                  name="faculty"
-                  value={data}
-                  readOnly
-                />
-              ))}
+            {course.faculty.map((data, index) => (
+              <Form.Control
+                key={index}
+                type="text"
+                name="faculty"
+                value={data}
+                readOnly
+              />
+            ))}
           </Form.Group>
         </Form>
       </div>
 
       <div className="table">
+        <Form.Label>Correlation Matrix</Form.Label>
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
@@ -121,15 +120,19 @@ function Submit(e) {
                 <td>CO{index + 1}</td>
                 {data.map((po, i) => (
                   <td key={i}>
-                    <Form.Control type="text" name="PO" placeholder={po} onChange={(e)  => handlePOChange(e.target.value, index, i)}/>
-                  </td> 
+                    <Form.Control
+                      type="text"
+                      name="PO"
+                      placeholder={po}
+                      onChange={(e) => handlePOChange(e.target.value, index, i)}
+                    />
+                  </td>
                 ))}
               </tr>
             ))}
           </tbody>
         </Table>
       </div>
-
 
       <div className="table">
         <Table striped bordered hover variant="dark">
@@ -147,8 +150,15 @@ function Submit(e) {
                 <td>CO{index + 1}</td>
                 {data.map((pso, i) => (
                   <td key={i}>
-                    <Form.Control type="text" name="PSO" placeholder={pso} onChange={(e)  => handlePSOChange(e.target.value, index, i)}/>
-                  </td> 
+                    <Form.Control
+                      type="text"
+                      name="PSO"
+                      placeholder={pso}
+                      onChange={(e) =>
+                        handlePSOChange(e.target.value, index, i)
+                      }
+                    />
+                  </td>
                 ))}
               </tr>
             ))}
@@ -156,11 +166,14 @@ function Submit(e) {
         </Table>
       </div>
 
-      <div>       
-      <Button variant="primary" onClick={Delete}>Delete</Button>{' '}
-      <Button variant="primary" onClick={Submit}>Save</Button>
-      </div> 
-
+      <div>
+        <Button variant="dark" onClick={Delete}>
+          Delete
+        </Button>{" "}
+        <Button variant="dark" onClick={Submit}>
+          Save
+        </Button>
+      </div>
     </div>
   );
 }
