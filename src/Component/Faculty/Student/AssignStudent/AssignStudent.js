@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Table, Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import BootstrapTable from "react-bootstrap-table-next";
 
 export default function ViewStudent() {
   const student = [
@@ -50,6 +51,32 @@ export default function ViewStudent() {
   const filteredStudentWithAdmissionYear = student.filter(function (student) {
     return student.admissionYear === filterAdmissionYear;
   });
+
+  const columns = [
+    {
+      dataField: "regNo",
+      text: "Reg.No",
+    },
+    {
+      dataField: "name",
+      text: "Name",
+    },
+  ];
+
+  const selectRow = {
+    mode: "checkbox",
+    clickToSelect: true,
+  };
+
+  function Submit(e) {
+    e.preventDefault();
+    console.log("Submit Button clicked.");
+  }
+
+  function Back(e) {
+    e.preventDefault();
+    console.log("Back Button clicked.");
+  }
   return (
     <div className="container-fluid">
       <div>
@@ -70,35 +97,20 @@ export default function ViewStudent() {
         </label>
       </div>
       <div className="table">
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Reg.No</th>
-              <th>Name</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredStudentWithAdmissionYear.map((data, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{data.regNo}</td>
-                <td>{data.name}</td>
-                <td>
-                  {/* <Button variant="light">
-                    <Link to="/admin/student/view-student/edit-student">
-                      View
-                    </Link>
-                  </Button> */}
-                  <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" />
-                  </Form.Group>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+        <BootstrapTable
+          keyField="regNo"
+          data={student}
+          columns={columns}
+          selectRow={selectRow}
+        />
+      </div>
+      <div>
+        <Button variant="dark" onClick={Back}>
+          <Link to="/">Back</Link>
+        </Button>{" "}
+        <Button variant="dark" onClick={Submit}>
+          Save
+        </Button>
       </div>
     </div>
   );

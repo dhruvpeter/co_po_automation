@@ -4,15 +4,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function AddCourse() {
   const [CoPoMatrix, setCoPoMatrix] = useState([
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
-  
+
   const [CoPsoMatrix, setCoPsoMatrix] = useState([
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
-]);
- 
+  ]);
 
   const [course, setCourse] = useState({
     name: "Engineerting Physics",
@@ -25,20 +24,19 @@ export default function AddCourse() {
     var resultMatrix = CoPoMatrix;
     resultMatrix[index][i] = Number(po);
     setCoPoMatrix(resultMatrix);
-  }
+  };
 
   const handlePSOChange = (pso, index, i) => {
     var resultMatrixPSO = CoPsoMatrix;
     resultMatrixPSO[index][i] = Number(pso);
     setCoPsoMatrix(resultMatrixPSO);
-  }
-
+  };
 
   function Submit(e) {
     e.preventDefault();
-    console.log('Submit Button clicked.');
-    }    
-        
+    console.log("Submit Button clicked.");
+  }
+
   return (
     <div className="container-fluid">
       <div className="form">
@@ -89,6 +87,7 @@ export default function AddCourse() {
       </div>
 
       <div className="table">
+        <Form.Label>Correlation Matrix</Form.Label>
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
@@ -104,15 +103,19 @@ export default function AddCourse() {
                 <td>CO{index + 1}</td>
                 {data.map((po, i) => (
                   <td key={i}>
-                    <Form.Control type="text" name="PO" placeholder={po} onChange={(e)  => handlePOChange(e.target.value, index, i)}/>
-                  </td> 
+                    <Form.Control
+                      type="text"
+                      name="PO"
+                      placeholder={po}
+                      onChange={(e) => handlePOChange(e.target.value, index, i)}
+                    />
+                  </td>
                 ))}
               </tr>
             ))}
           </tbody>
         </Table>
       </div>
-
 
       <div className="table">
         <Table striped bordered hover variant="dark">
@@ -130,8 +133,15 @@ export default function AddCourse() {
                 <td>CO{index + 1}</td>
                 {data.map((pso, i) => (
                   <td key={i}>
-                    <Form.Control type="text" name="PSO" placeholder={pso} onChange={(e)  => handlePSOChange(e.target.value, index, i)}/>
-                  </td> 
+                    <Form.Control
+                      type="text"
+                      name="PSO"
+                      placeholder={pso}
+                      onChange={(e) =>
+                        handlePSOChange(e.target.value, index, i)
+                      }
+                    />
+                  </td>
                 ))}
               </tr>
             ))}
@@ -139,10 +149,11 @@ export default function AddCourse() {
         </Table>
       </div>
 
-      <div>       
-      <Button variant="primary" onClick={Submit}>Save</Button>
-      </div> 
-
+      <div>
+        <Button variant="primary" onClick={Submit}>
+          Save
+        </Button>
+      </div>
     </div>
   );
 }
