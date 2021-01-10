@@ -77,6 +77,7 @@ export default function SelectedFaculty() {
       </div>
 
       <div className="filter">
+      <Form.Label>Admission Year</Form.Label>
         <label>
           <select
             value={filterBatchYear}

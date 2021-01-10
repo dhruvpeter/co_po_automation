@@ -1,25 +1,28 @@
 import React from "react";
 import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./ViewFaculty.css"
-const faculty = [
-  {
-    id: "1000",
-    name: "Sumesh Divakaran",
-  },
-  {
-    id: "1001",
-    name: "Preethi L",
-  },
-  {
-    id: "1002",
-    name: "Sreelal",
-  },
-];
+import "./ViewFaculty.css";
+
 export default function ViewFaculty() {
+  const faculty = [
+    {
+      id: "1000",
+      name: "Sumesh Divakaran",
+    },
+    {
+      id: "1001",
+      name: "Preethi L",
+    },
+    {
+      id: "1002",
+      name: "Sreelal",
+    },
+  ];
   return (
     <div className="container-fluid">
-        <div><h3>Faculty Details</h3></div>
+      <div>
+        <h3>Faculty Details</h3>
+      </div>
       <Table striped bordered hover variant="dark" className="viewFacultyTable">
         <thead>
           <tr>
@@ -37,10 +40,14 @@ export default function ViewFaculty() {
               <td>{data.name}</td>
               <td>
                 <Button variant="light" className="button">
-                  <Link to="/admin/faculty/view-faculty/selected-faculty">View</Link>
+                  <Link to="/admin/faculty/view-faculty/selected-faculty">
+                    View
+                  </Link>
                 </Button>
                 <Button variant="light" className="button">
-                  <Link to="/admin/faculty/view-faculty/assign-faculty">Assign</Link>
+                  <Link to="/admin/faculty/view-faculty/assign-faculty">
+                    Assign
+                  </Link>
                 </Button>
               </td>
             </tr>
