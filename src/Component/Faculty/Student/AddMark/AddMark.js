@@ -38,17 +38,20 @@ class AddMark extends Component {
       <div className="container-fluid">
         <div>
           <h1>Upload File</h1>
-          <input
-            className="btn"
-            type="file"
-            onChange={this.changeHandler.bind(this)}
-          />
-          <OutTable
-            data={this.state.rows}
-            columns={this.state.cols}
-            tableClassName="ExcelTable2007"
-            tableHeaderRowClass="heading"
-          />
+          (To change course, go to home page.)
+          <div>
+            <input
+              className="btn"
+              type="file"
+              onChange={this.changeHandler.bind(this)}
+            />
+            <OutTable
+              data={this.state.rows}
+              columns={this.state.cols}
+              tableClassName="ExcelTable2007"
+              tableHeaderRowClass="heading"
+            />
+          </div>
         </div>
 
         <div>

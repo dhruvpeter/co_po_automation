@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BootstrapTable from "react-bootstrap-table-next";
 
-export default function ViewStudent() {
+export default function AssignStudent() {
   const student = [
     {
       regNo: "TVE18CS017",
@@ -107,7 +107,8 @@ export default function ViewStudent() {
   return (
     <div className="container-fluid">
       <div>
-        <h3>Student Details</h3>
+        <h3>Assign Students</h3>
+        (To change course, go to home page.)
       </div>
       <div className="filter">
         <label>
@@ -126,7 +127,7 @@ export default function ViewStudent() {
       <div className="table">
         <BootstrapTable
           keyField="regNo"
-          data={student}
+          data={filteredStudentWithAdmissionYear}
           columns={columns}
           selectRow={selectRow}
         />
