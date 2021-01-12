@@ -26,6 +26,7 @@ export default function NavigationBar() {
                 Assign Student
               </NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/faculty/survey">Survey</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="/faculty/profile">Profile</Nav.Link>
