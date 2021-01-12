@@ -6,7 +6,9 @@ import Login from "./Component/Login/Login";
 export default function App() {
   return (
     <div>
-      <Login />
+      {/* <Login /> */}
+      {/* <Admin/> */}
+      <Faculty/>
     </div>
   );
 }
