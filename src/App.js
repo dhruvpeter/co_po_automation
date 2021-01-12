@@ -5,7 +5,7 @@ import Faculty from "./Component/Faculty/Faculty";
 export default function App() {
   return (
     <div>
-      <Faculty />
+      <Admin />
     </div>
   );
 }
