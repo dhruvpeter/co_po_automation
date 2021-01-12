@@ -10,11 +10,11 @@ export default function NavigationBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <NavDropdown title="Selected Course" id="collasible-nav-dropdown">
+            {/* <NavDropdown title="Selected Course" id="collasible-nav-dropdown">
               <NavDropdown.Item href="">
                 Selected Course
               </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
             <NavDropdown title="Student" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/faculty/student/view-student">
                 View Student
