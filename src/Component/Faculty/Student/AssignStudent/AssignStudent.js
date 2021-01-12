@@ -26,6 +26,13 @@ export default function AssignStudent() {
       admissionYear: "2018",
     },
   ];
+  const [selectedStudents, setStudent] = useState(
+  () => {
+      const boolList = []
+      for(let i = 0 ; i < student.length ; i++)
+        boolList.push(false);
+      return boolList;
+  });
   const admissionYear = [
     "2015",
     "2016",
@@ -66,11 +73,31 @@ export default function AssignStudent() {
   const selectRow = {
     mode: "checkbox",
     clickToSelect: true,
-  };
+    onSelect: (row, isSelect, rowIndex, e) => {
+      const newList = [...selectedStudents]
+      newList[rowIndex] = isSelect;
+      setStudent(newList);
+    },
+    onSelectAll: (isSelect, rows, e) => {
+      const newList = [...selectedStudents];
+      for(let i = 0 ; i < newList.length ; i++)
+        newList[i] = isSelect;
+      setStudent(newList);
+    }
+  }
 
   function Submit(e) {
-    e.preventDefault();
-    console.log("Submit Button clicked.");
+
+    // Observe hooks for correct changes
+    let selectList = selectedStudents;
+    const finalList = [];
+    for(let i = 0 ; i < selectList.length ; i++)
+      if(selectList[i])
+        finalList.push({
+          university_no: student[i].regNo,
+          passoutYear: student[i].admissionYear});
+    setStudent(finalList);
+    console.log(selectedStudents);
   }
 
   function Back(e) {
