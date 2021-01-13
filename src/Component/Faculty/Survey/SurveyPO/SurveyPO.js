@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 // It's not clear to me how to trigger updates to the UI
 const useForceUpdate = () => useState()[1];
 
-function AddStudent() {
+function SurveyPO() {
   const fileInput = useRef(null);
   const forceUpdate = useForceUpdate();
 
@@ -29,7 +29,8 @@ function AddStudent() {
   }
 
   return (
-    <div className="App">
+    <div className="container-fluid">
+      <div><h3>Survey for Students(PO)</h3></div>
       <form onSubmit={onSubmit}>
         <input
           id="file"
@@ -51,7 +52,7 @@ function AddStudent() {
 }
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<AddStudent />, rootElement);
+ReactDOM.render(<SurveyPO />, rootElement);
 
 
-export default AddStudent;
+export default SurveyPO;
