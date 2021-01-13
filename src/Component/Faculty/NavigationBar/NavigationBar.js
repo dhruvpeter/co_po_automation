@@ -26,7 +26,14 @@ export default function NavigationBar() {
                 Assign Student
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/faculty/survey">Survey</Nav.Link>
+            <NavDropdown title="Survey" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="/faculty/survey/surveyPO">
+                PO Survey 
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/faculty/survey/surveyPSO">
+                PSO Survey 
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <Nav>
             <Nav.Link href="/faculty/profile">Profile</Nav.Link>
