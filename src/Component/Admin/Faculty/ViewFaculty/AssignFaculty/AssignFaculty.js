@@ -18,17 +18,25 @@ export default function AssignFaculty() {
   const course = [
     {
       name: "Engineering Physics",
+      code: "AAA",
       semester: "S1",
     },
     {
       name: "Data Structures",
+      code: "AAA",
       semester: "S3",
     },
     {
       name: "Theory of Computation",
+      code: "AAA",
       semester: "S5",
     },
   ];
+  const year = ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"];
+  const [filterYear, setFilterYear] = useState("2018");
+  const handleChangeFilterYear = (event) => {
+    setFilterYear(event.target.value);
+  };
   const semester = ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"];
   const [filterSem, setFilterSem] = useState("S1");
   const handleChangeFilterSem = (event) => {
@@ -46,6 +54,7 @@ export default function AssignFaculty() {
   const selectCourse = (event) => {
     event.preventDefault();
     const newItem = filteredCourseWithSem[0];
+    newItem.year=filterYear;
 
     let allItems = faculty.course;
     allItems.push(newItem);
@@ -104,6 +113,15 @@ export default function AssignFaculty() {
             {filteredCourseWithSem.map((data, index) => (
               <option key={index} value={data.name}>
                 {data.name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          <select value={filterYear} onChange={handleChangeFilterYear}>
+            {year.map((data, index) => (
+              <option key={index} value={data}>
+                {data}
               </option>
             ))}
           </select>
