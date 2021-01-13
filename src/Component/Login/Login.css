@@ -1,0 +1,19 @@
+@media all and (min-width: 480px) {
+  .Login {
+    padding-top: 10px;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+.title {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.toggle {
+  text-align: center;
+  padding-top: 90px;
+}

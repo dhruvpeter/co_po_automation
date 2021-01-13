@@ -11,6 +11,8 @@ import AddFaculty from "../Faculty/AddFaculty/AddFaculty";
 import ViewStudent from "../Student/ViewStudent/ViewStudent";
 import EditStudent from "../Student/ViewStudent/EditStudent/EditStudent";
 import AddStudent from "../Student/AddStudent/AddStudent";
+import SurveyFaculty from "../Survey/SurveyFaculty/SurveyFaculty";
+import SurveyEmployer from "../Survey/SurveyEmployer/SurveyEmployer";
 import CO from "../Result/CO/CO";
 import PO from "../Result/PO/PO";
 import PSO from "../Result/PSO/PSO";
@@ -58,6 +60,16 @@ export default function AdminLinks() {
           component={EditStudent}
         />
         <Route path="/admin/student/add-student" exact component={AddStudent} />
+        <Route
+          path="/admin/survey/survey-employer"
+          exact
+          component={SurveyEmployer}
+        />
+        <Route
+          path="/admin/survey/survey-faculty"
+          exact
+          component={SurveyFaculty}
+        />
         <Route path="/admin/result/co" exact component={CO} />
         <Route path="/admin/result/po" exact component={PO} />
         <Route path="/admin/result/pso" exact component={PSO} />

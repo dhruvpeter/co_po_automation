@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import BootstrapTable from "react-bootstrap-table-next";
 
-export default function ViewStudent() {
+export default function AssignStudent() {
   const student = [
     {
       regNo: "TVE18CS017",
@@ -26,6 +26,13 @@ export default function ViewStudent() {
       admissionYear: "2018",
     },
   ];
+  const [selectedStudents, setStudent] = useState(
+  () => {
+      const boolList = []
+      for(let i = 0 ; i < student.length ; i++)
+        boolList.push(false);
+      return boolList;
+  });
   const admissionYear = [
     "2015",
     "2016",
@@ -66,11 +73,31 @@ export default function ViewStudent() {
   const selectRow = {
     mode: "checkbox",
     clickToSelect: true,
-  };
+    onSelect: (row, isSelect, rowIndex, e) => {
+      const newList = [...selectedStudents]
+      newList[rowIndex] = isSelect;
+      setStudent(newList);
+    },
+    onSelectAll: (isSelect, rows, e) => {
+      const newList = [...selectedStudents];
+      for(let i = 0 ; i < newList.length ; i++)
+        newList[i] = isSelect;
+      setStudent(newList);
+    }
+  }
 
   function Submit(e) {
-    e.preventDefault();
-    console.log("Submit Button clicked.");
+
+    // Observe hooks for correct changes
+    let selectList = selectedStudents;
+    const finalList = [];
+    for(let i = 0 ; i < selectList.length ; i++)
+      if(selectList[i])
+        finalList.push({
+          university_no: student[i].regNo,
+          passoutYear: student[i].admissionYear});
+    setStudent(finalList);
+    console.log(selectedStudents);
   }
 
   function Back(e) {
@@ -80,7 +107,8 @@ export default function ViewStudent() {
   return (
     <div className="container-fluid">
       <div>
-        <h3>Student Details</h3>
+        <h3>Assign Students</h3>
+        (To change course, go to home page.)
       </div>
       <div className="filter">
         <label>
@@ -99,7 +127,7 @@ export default function ViewStudent() {
       <div className="table">
         <BootstrapTable
           keyField="regNo"
-          data={student}
+          data={filteredStudentWithAdmissionYear}
           columns={columns}
           selectRow={selectRow}
         />
