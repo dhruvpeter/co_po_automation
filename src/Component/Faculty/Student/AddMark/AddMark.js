@@ -1,67 +1,57 @@
-import React, { Component } from "react";
-import { ExcelRenderer, OutTable } from "react-excel-renderer";
-import { Button } from "react-bootstrap";
+import React, { useState, useRef, useEffect } from "react";
+import ReactDOM from "react-dom";
 
-class AddMark extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      rows: [],
-      cols: [],
-    };
-  }
-  //  WORKING CODE ---------------------
-  changeHandler(event) {
-    let fileObj = event.target.files[0];
-    //just pass the fileObj as parameter
-    ExcelRenderer(fileObj, (err, resp) => {
-      if (err) {
-        console.log(err);
-      } else {
-        this.setState({
-          cols: resp.cols,
-          rows: resp.rows,
-        });
-        console.log(this.state);
+
+// It's not clear to me how to trigger updates to the UI
+const useForceUpdate = () => useState()[1];
+
+function AddMark() {
+  const fileInput = useRef(null);
+  const forceUpdate = useForceUpdate();
+
+  useEffect(e => {
+    window.addEventListener("keyup", clickFileInput);
+    return () => window.removeEventListener("keyup", clickFileInput);
+  });
+
+  function clickFileInput(e) {
+    if (fileInput.current.nextSibling.contains(document.activeElement)) {
+      // Bind space to trigger clicking of the button when focused
+      if (e.keyCode === 32) {
+        fileInput.current.click();
       }
-    });
-  }
-  //  WORKING CODE ---------------------
-
-  render() {
-    function Submit(e) {
-      e.preventDefault();
-      console.log("Upload Button clicked.");
     }
-
-    return (
-      <div className="container-fluid">
-        <div>
-          <h1>Upload File</h1>
-          (To change course, go to home page.)
-          <div>
-            <input
-              className="btn"
-              type="file"
-              onChange={this.changeHandler.bind(this)}
-            />
-            <OutTable
-              data={this.state.rows}
-              columns={this.state.cols}
-              tableClassName="ExcelTable2007"
-              tableHeaderRowClass="heading"
-            />
-          </div>
-        </div>
-
-        <div>
-          <Button variant="primary" onClick={Submit}>
-            Upload
-          </Button>
-        </div>
-      </div>
-    );
   }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    console.log("Submit Button clicked.");
+  }
+
+  return (
+    <div className="App">
+      <form onSubmit={onSubmit}>
+        <input
+          id="file"
+          type="file"
+          ref={fileInput}
+          // The onChange should trigger updates whenever
+          // the value changes?
+          // Try to select a file, then try selecting another one.
+          onChange={forceUpdate}
+          multiple
+        />
+        <br />
+        <br />
+    
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<AddMark />, rootElement);
+
 
 export default AddMark;
