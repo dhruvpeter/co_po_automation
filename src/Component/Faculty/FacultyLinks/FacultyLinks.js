@@ -5,7 +5,8 @@ import ViewStudent from "../Student/ViewStudent/ViewStudent";
 import AddMark from "../Student/AddMark/AddMark";
 import AssignStudent from "../Student/AssignStudent/AssignStudent";
 import Profile from "../Profile/Profile";
-import Survey from "../Survey/Survey";
+import SurveyPO from "../Survey/SurveyPO/SurveyPO";
+import SurveyPSO from "../Survey/SurveyPSO/SurveyPSO";
 export default function FacultyLinks() {
   return (
     <Router>
@@ -23,7 +24,8 @@ export default function FacultyLinks() {
           component={AssignStudent}
         />
         <Route path="/faculty/profile" exact component={Profile} />
-        <Route path="/faculty/survey" exact component={Survey} />
+        <Route path="/faculty/survey/surveyPO" exact component={SurveyPO} />
+        <Route path="/faculty/survey/surveyPSO" exact component={SurveyPSO} />
       </Switch>
     </Router>
   );

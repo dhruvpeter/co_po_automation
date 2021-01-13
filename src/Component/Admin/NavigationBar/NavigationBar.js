@@ -34,18 +34,24 @@ export default function NavigationBar() {
                 Add Student
               </NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Survey" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/admin/survey/survey-employer">
-                Employer
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/admin/survey/survey-faculty">
-                Faculty
-              </NavDropdown.Item>
-            </NavDropdown>
             <NavDropdown title="Result" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/admin/result/co">CO</NavDropdown.Item>
               <NavDropdown.Item href="/admin/result/po">PO</NavDropdown.Item>
               <NavDropdown.Item href="/admin/result/pso">PSO</NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="Survey" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="/admin/survey/survey-facultyPO">
+                PO Survey Faculty 
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/admin/survey/survey-facultyPO">
+                PSO Survey Faculty 
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/admin/survey/survey-employerPO">
+                PO Survey Employer 
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/admin/survey/survey-employerPSO">
+                PSO Survey Employer 
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>

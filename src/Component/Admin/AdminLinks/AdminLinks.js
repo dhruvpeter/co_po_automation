@@ -11,8 +11,10 @@ import AddFaculty from "../Faculty/AddFaculty/AddFaculty";
 import ViewStudent from "../Student/ViewStudent/ViewStudent";
 import EditStudent from "../Student/ViewStudent/EditStudent/EditStudent";
 import AddStudent from "../Student/AddStudent/AddStudent";
-import SurveyFaculty from "../Survey/SurveyFaculty/SurveyFaculty";
-import SurveyEmployer from "../Survey/SurveyEmployer/SurveyEmployer";
+import SurveyFacultyPO from "../Survey/SurveyFacultyPO/SurveyFacultyPO";
+import SurveyFacultyPSO from "../Survey/SurveyFacultyPSO/SurveyFacultyPSO";
+import SurveyEmployerPO from "../Survey/SurveyEmployerPO/SurveyEmployerPO";
+import SurveyEmployerPSO from "../Survey/SurveyEmployerPSO/SurveyEmployerPSO";
 import CO from "../Result/CO/CO";
 import PO from "../Result/PO/PO";
 import PSO from "../Result/PSO/PSO";
@@ -61,14 +63,24 @@ export default function AdminLinks() {
         />
         <Route path="/admin/student/add-student" exact component={AddStudent} />
         <Route
-          path="/admin/survey/survey-employer"
+          path="/admin/survey/survey-employerPO"
           exact
-          component={SurveyEmployer}
+          component={SurveyEmployerPO}
         />
         <Route
-          path="/admin/survey/survey-faculty"
+          path="/admin/survey/survey-employerPSO"
           exact
-          component={SurveyFaculty}
+          component={SurveyEmployerPSO}
+        />
+        <Route
+          path="/admin/survey/survey-facultyPO"
+          exact
+          component={SurveyFacultyPO}
+        />
+        <Route
+          path="/admin/survey/survey-facultyPSO"
+          exact
+          component={SurveyFacultyPSO}
         />
         <Route path="/admin/result/co" exact component={CO} />
         <Route path="/admin/result/po" exact component={PO} />
