@@ -71,6 +71,9 @@ export default function AssignFaculty() {
   }
   return (
     <div className="container-fluid">
+      <div>
+        <h3>Assign Faculty</h3>
+      </div>
       <div className="form">
         <Form>
           <Form.Group>

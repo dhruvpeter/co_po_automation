@@ -29,7 +29,8 @@ function SurveyEmployerPSO() {
   }
 
   return (
-    <div className="App">
+    <div className="container-fluid">
+      <div><h3>Survey for Employer(PSO)</h3></div>
       <form onSubmit={onSubmit}>
         <input
           id="file"

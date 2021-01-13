@@ -29,7 +29,8 @@ function AddStudent() {
   }
 
   return (
-    <div className="App">
+    <div className="container-fluid">
+      <div><h3>Add Student</h3></div>
       <form onSubmit={onSubmit}>
         <input
           id="file"
