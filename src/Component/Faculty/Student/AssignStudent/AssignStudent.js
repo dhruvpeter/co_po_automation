@@ -26,12 +26,10 @@ export default function AssignStudent() {
       admissionYear: "2018",
     },
   ];
-  const [selectedStudents, setStudent] = useState(
-  () => {
-      const boolList = []
-      for(let i = 0 ; i < student.length ; i++)
-        boolList.push(false);
-      return boolList;
+  const [selectedStudents, setStudent] = useState(() => {
+    const boolList = [];
+    for (let i = 0; i < student.length; i++) boolList.push(false);
+    return boolList;
   });
   const admissionYear = [
     "2015",
@@ -74,28 +72,35 @@ export default function AssignStudent() {
     mode: "checkbox",
     clickToSelect: true,
     onSelect: (row, isSelect, rowIndex, e) => {
-      const newList = [...selectedStudents]
+      const newList = [...selectedStudents];
       newList[rowIndex] = isSelect;
       setStudent(newList);
     },
     onSelectAll: (isSelect, rows, e) => {
       const newList = [...selectedStudents];
-      for(let i = 0 ; i < newList.length ; i++)
-        newList[i] = isSelect;
+      for (let i = 0; i < newList.length; i++) newList[i] = isSelect;
       setStudent(newList);
-    }
-  }
-
+    },
+  };
+  const faculty = {
+    id: "TVE18",
+    name: "Sreelal",
+    course: ["Physics", "Chemistry"],
+  };
+  const [filterCourse, setFilterCourse] = useState(faculty.course[0]);
+  const handleChangeFilterCourse = (event) => {
+    setFilterCourse(event.target.value);
+  };
   function Submit(e) {
-
     // Observe hooks for correct changes
     let selectList = selectedStudents;
     const finalList = [];
-    for(let i = 0 ; i < selectList.length ; i++)
-      if(selectList[i])
+    for (let i = 0; i < selectList.length; i++)
+      if (selectList[i])
         finalList.push({
           university_no: student[i].regNo,
-          passoutYear: student[i].admissionYear});
+          passoutYear: student[i].admissionYear,
+        });
     setStudent(finalList);
     console.log(selectedStudents);
   }
@@ -108,7 +113,18 @@ export default function AssignStudent() {
     <div className="container-fluid">
       <div>
         <h3>Assign Students</h3>
-        (To change course, go to home page.)
+      </div>
+      <div>
+        <h5>Choose course:</h5>
+        <label>
+          <select value={filterCourse} onChange={handleChangeFilterCourse}>
+            {faculty.course.map((data, index) => (
+              <option key={index} value={data}>
+                {data}
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
       <div className="filter">
         <label>
