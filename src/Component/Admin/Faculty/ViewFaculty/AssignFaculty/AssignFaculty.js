@@ -65,10 +65,6 @@ export default function AssignFaculty() {
     console.log("Submit Button clicked.");
   }
 
-  function Delete(e) {
-    e.preventDefault();
-    console.log("Delete Button clicked.");
-  }
   function Back(e) {
     e.preventDefault();
     console.log("Back Button clicked.");
@@ -145,10 +141,7 @@ export default function AssignFaculty() {
       </div>
       <div>
         <Button variant="dark" onClick={Back}>
-          <Link to="/admin/faculty/view-faculty" >Back</Link>
-        </Button>{" "}
-        <Button variant="dark" onClick={Delete}>
-          Delete
+          <Link to="/admin/faculty/view-faculty">Back</Link>
         </Button>{" "}
         <Button variant="dark" onClick={Submit}>
           Save
