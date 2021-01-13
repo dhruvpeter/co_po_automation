@@ -7,7 +7,14 @@ export default function AssignFaculty() {
   const [faculty, setFaculty] = useState({
     id: "1000",
     name: "Sumesh Divakaran",
-    course: [],
+    course: [
+      {
+        name: "Engineering Physics",
+        code: "AAA",
+        semester: "S1",
+        year: "2018",
+      },
+    ],
   });
   //   const faculty = {
   //     id: "1000",
@@ -54,7 +61,7 @@ export default function AssignFaculty() {
   const selectCourse = (event) => {
     event.preventDefault();
     const newItem = filteredCourseWithSem[0];
-    newItem.year=filterYear;
+    newItem.year = filterYear;
 
     let allItems = faculty.course;
     allItems.push(newItem);
@@ -138,6 +145,7 @@ export default function AssignFaculty() {
               <th>#</th>
               <th>Semester</th>
               <th>Course Name</th>
+              <th>Year</th>
               <th></th>
             </tr>
           </thead>
@@ -147,6 +155,7 @@ export default function AssignFaculty() {
                 <td>{index + 1}</td>
                 <td>{data.semester}</td>
                 <td>{data.name}</td>
+                <td>{data.year}</td>
                 <td>
                   <Button variant="light" onClick={() => deleteItem(index)}>
                     {/* <Link to="/admin/course/course-details/selected-course">
