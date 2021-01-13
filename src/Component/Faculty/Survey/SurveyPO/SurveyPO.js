@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 // It's not clear to me how to trigger updates to the UI
 const useForceUpdate = () => useState()[1];
 
-function SurveyFaculty() {
+function SurveyPO() {
   const fileInput = useRef(null);
   const forceUpdate = useForceUpdate();
 
@@ -51,7 +51,7 @@ function SurveyFaculty() {
 }
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<SurveyFaculty />, rootElement);
+ReactDOM.render(<SurveyPO />, rootElement);
 
 
-export default SurveyFaculty;
+export default SurveyPO;
