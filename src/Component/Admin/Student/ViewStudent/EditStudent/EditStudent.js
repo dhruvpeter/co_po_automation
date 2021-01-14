@@ -1,5 +1,6 @@
 import React,{ useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function SelectedFaculty() {
@@ -37,8 +38,13 @@ export default function SelectedFaculty() {
 
     function Delete(e) {
         e.preventDefault();
-        console.log('Delete Button clicked.');
-        }    
+        console.log('Delete Button clicked.');  
+    }  
+     
+    function Back(e) {
+      e.preventDefault();
+      console.log('Back Button clicked.');
+    }     
 
   return (
     <div className="container-fluid">
@@ -91,7 +97,10 @@ export default function SelectedFaculty() {
         </label>
       </div>
 
-      <div>       
+      <div>  
+      <Button variant="dark" onClick={Back}>
+          <Link to="/admin/student/view-student">Back</Link>
+        </Button>{" "}       
       <Button variant="primary" onClick={Delete}>Delete</Button>{' '}
       <Button variant="primary" onClick={Submit}>Save</Button>
       </div> 

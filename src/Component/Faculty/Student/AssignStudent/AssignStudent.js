@@ -105,10 +105,6 @@ export default function AssignStudent() {
     console.log(selectedStudents);
   }
 
-  function Back(e) {
-    e.preventDefault();
-    console.log("Back Button clicked.");
-  }
   return (
     <div className="container-fluid">
       <div>
@@ -149,9 +145,6 @@ export default function AssignStudent() {
         />
       </div>
       <div>
-        <Button variant="dark" onClick={Back}>
-          <Link to="/">Back</Link>
-        </Button>{" "}
         <Button variant="dark" onClick={Submit}>
           Save
         </Button>
