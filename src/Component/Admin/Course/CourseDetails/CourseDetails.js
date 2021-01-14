@@ -30,14 +30,6 @@ export default function CourseDetails() {
   const handleChangeFilterBatchYear = (event) => {
     setFilterBatchYear(event.target.value);
   };
-  const filteredCourseWithSem = course.filter(function (course) {
-    return course.semester === filterSem;
-  });
-  const filteredCourseWithSemAndBatchYear = filteredCourseWithSem.filter(
-    function (course) {
-      return course.batchYear === filterBatchYear;
-    }
-  );
 
   useEffect(() => { 
       async function fetchCourses(){
@@ -94,7 +86,7 @@ export default function CourseDetails() {
             </tr>
           </thead>
           <tbody>
-            {filteredCourseWithSemAndBatchYear.map((data, index) => (
+            {course.map((data, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{data.course_code}</td>
