@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./ViewFaculty.css";
@@ -57,3 +58,11 @@ export default function ViewFaculty() {
     </div>
   );
 }
+
+axios.get('/user', {params: {
+
+}}).then((res) => {
+  console.log(res);
+}).then((err) => {
+  console.log(err);
+})
