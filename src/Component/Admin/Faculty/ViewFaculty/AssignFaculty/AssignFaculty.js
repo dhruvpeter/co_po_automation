@@ -7,7 +7,14 @@ export default function AssignFaculty() {
   const [faculty, setFaculty] = useState({
     id: "1000",
     name: "Sumesh Divakaran",
-    course: [],
+    course: [
+      {
+        name: "Engineering Physics",
+        code: "AAA",
+        semester: "S1",
+        year: "2018",
+      },
+    ],
   });
   //   const faculty = {
   //     id: "1000",
@@ -18,17 +25,25 @@ export default function AssignFaculty() {
   const course = [
     {
       name: "Engineering Physics",
+      code: "AAA",
       semester: "S1",
     },
     {
       name: "Data Structures",
+      code: "AAA",
       semester: "S3",
     },
     {
       name: "Theory of Computation",
+      code: "AAA",
       semester: "S5",
     },
   ];
+  const year = ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"];
+  const [filterYear, setFilterYear] = useState("2018");
+  const handleChangeFilterYear = (event) => {
+    setFilterYear(event.target.value);
+  };
   const semester = ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"];
   const [filterSem, setFilterSem] = useState("S1");
   const handleChangeFilterSem = (event) => {
@@ -46,6 +61,7 @@ export default function AssignFaculty() {
   const selectCourse = (event) => {
     event.preventDefault();
     const newItem = filteredCourseWithSem[0];
+    newItem.year = filterYear;
 
     let allItems = faculty.course;
     allItems.push(newItem);
@@ -71,6 +87,9 @@ export default function AssignFaculty() {
   }
   return (
     <div className="container-fluid">
+      <div>
+        <h3>Assign Faculty</h3>
+      </div>
       <div className="form">
         <Form>
           <Form.Group>
@@ -105,6 +124,15 @@ export default function AssignFaculty() {
             ))}
           </select>
         </label>
+        <label>
+          <select value={filterYear} onChange={handleChangeFilterYear}>
+            {year.map((data, index) => (
+              <option key={index} value={data}>
+                {data}
+              </option>
+            ))}
+          </select>
+        </label>
         <Button variant="dark" type="submit" onClick={selectCourse}>
           Select
         </Button>
@@ -117,6 +145,7 @@ export default function AssignFaculty() {
               <th>#</th>
               <th>Semester</th>
               <th>Course Name</th>
+              <th>Year</th>
               <th></th>
             </tr>
           </thead>
@@ -126,6 +155,7 @@ export default function AssignFaculty() {
                 <td>{index + 1}</td>
                 <td>{data.semester}</td>
                 <td>{data.name}</td>
+                <td>{data.year}</td>
                 <td>
                   <Button variant="light" onClick={() => deleteItem(index)}>
                     {/* <Link to="/admin/course/course-details/selected-course">

@@ -20,6 +20,7 @@ export default function SelectedFaculty() {
 
   return (
     <div className="container-fluid">
+      <div><h3>Add Faculty</h3></div>
       <div className="form">
         <Form>
           <Form.Group>

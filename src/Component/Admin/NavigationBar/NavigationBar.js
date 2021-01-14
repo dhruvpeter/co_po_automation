@@ -5,7 +5,7 @@ export default function NavigationBar() {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="/admin/profile">Admin</Navbar.Brand>
+        <Navbar.Brand href="/">Admin</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
@@ -43,7 +43,7 @@ export default function NavigationBar() {
               <NavDropdown.Item href="/admin/survey/survey-facultyPO">
                 PO Survey Faculty 
               </NavDropdown.Item>
-              <NavDropdown.Item href="/admin/survey/survey-facultyPO">
+              <NavDropdown.Item href="/admin/survey/survey-facultyPSO">
                 PSO Survey Faculty 
               </NavDropdown.Item>
               <NavDropdown.Item href="/admin/survey/survey-employerPO">
@@ -55,7 +55,7 @@ export default function NavigationBar() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="/admin/profile">Profile</Nav.Link>
+            {/* <Nav.Link href="/admin/profile">Profile</Nav.Link> */}
             <Nav.Link href="">Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>

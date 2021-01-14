@@ -18,7 +18,6 @@ import SurveyEmployerPSO from "../Survey/SurveyEmployerPSO/SurveyEmployerPSO";
 import CO from "../Result/CO/CO";
 import PO from "../Result/PO/PO";
 import PSO from "../Result/PSO/PSO";
-import Profile from "../Profile/Profile";
 export default function AdminLinks() {
   return (
     <Router>
@@ -85,7 +84,6 @@ export default function AdminLinks() {
         <Route path="/admin/result/co" exact component={CO} />
         <Route path="/admin/result/po" exact component={PO} />
         <Route path="/admin/result/pso" exact component={PSO} />
-        <Route path="/admin/profile" exact component={Profile} />
       </Switch>
     </Router>
   );

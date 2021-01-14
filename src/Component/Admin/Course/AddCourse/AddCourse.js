@@ -39,6 +39,7 @@ export default function AddCourse() {
 
   return (
     <div className="container-fluid">
+      <div><h3>Add Course</h3></div>
       <div className="form">
         <Form>
           <Form.Group>
