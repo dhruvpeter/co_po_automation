@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Table, Form, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function SelectedCourse() {
@@ -21,6 +22,11 @@ export default function SelectedCourse() {
   function Delete(e) {
     e.preventDefault();
     console.log("Delete Button clicked.");
+  }
+
+  function Back(e) {
+    e.preventDefault();
+    console.log("Back Button clicked.");
   }
 
   const [course, setCourse] = useState({
@@ -167,6 +173,9 @@ export default function SelectedCourse() {
       </div>
 
       <div>
+        <Button variant="dark" onClick={Back}>
+          <Link to="/admin/course/course-details">Back</Link>
+        </Button>{" "} 
         <Button variant="dark" onClick={Delete}>
           Delete
         </Button>{" "}
