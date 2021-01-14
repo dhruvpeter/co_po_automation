@@ -6,11 +6,19 @@ export default function AddCourse() {
   const [CoPoMatrix, setCoPoMatrix] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
 
   const [CoPsoMatrix, setCoPsoMatrix] = useState([
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0], 
   ]);
 
   const [course, setCourse] = useState({
@@ -39,6 +47,7 @@ export default function AddCourse() {
 
   return (
     <div className="container-fluid">
+      <div><h3>Add Course</h3></div>
       <div className="form">
         <Form>
           <Form.Group>

@@ -125,7 +125,7 @@ export default function CO() {
         <thead>
           <tr>
             <th>#</th>
-            <th>Year of admission</th>
+            <th>Batch Year</th>
 
             {Array.from({ length: 6 }).map((_, index) => (
               <th key={index}>CO{index + 1}</th>

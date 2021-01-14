@@ -1,41 +1,11 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./CourseDetails.css";
 
 export default function CourseDetails() {
-  const course = [
-    {
-      code: "PH100",
-      name: "Engineering Physics",
-      semester: "S1",
-      batchYear: "2020",
-    },
-    {
-      code: "PH100",
-      name: "Engineering Physics",
-      semester: "S1",
-      batchYear: "2020",
-    },
-    {
-      code: "PH100",
-      name: "Engineering Physics",
-      semester: "S1",
-      batchYear: "2022",
-    },
-    {
-      code: "CS205",
-      name: "Data Structures",
-      semester: "S3",
-      batchYear: "2022",
-    },
-    {
-      code: "CS301",
-      name: "Theory of Computation",
-      semester: "S5",
-      batchYear: "2022",
-    },
-  ];
+  const [course, setCourse] = useState([]);
   const semester = ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"];
   const batchYear = [
     "2019",
@@ -51,6 +21,7 @@ export default function CourseDetails() {
     "2029",
     "2030",
   ];
+
   const [filterSem, setFilterSem] = useState("S1");
   const handleChangeFilterSem = (event) => {
     setFilterSem(event.target.value);
@@ -67,6 +38,25 @@ export default function CourseDetails() {
       return course.batchYear === filterBatchYear;
     }
   );
+
+  useEffect(() => { 
+      async function fetchCourses(){
+      try{
+        const response = await axios.get("http://localhost:5000/api/course", {
+          params:{
+            semester: filterSem,
+            batch: filterBatchYear + 4
+          }
+        });
+        setCourse(response);
+      }catch(err){
+        console.log(err);
+      }
+    }
+    fetchCourses();
+  },[filterSem, filterBatchYear]);
+
+
   return (
     <div className="container-fluid">
       <div><h3>Course Details</h3></div>
