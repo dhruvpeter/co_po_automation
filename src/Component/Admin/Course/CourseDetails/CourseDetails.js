@@ -97,8 +97,8 @@ export default function CourseDetails() {
             {filteredCourseWithSemAndBatchYear.map((data, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{data.code}</td>
-                <td>{data.name}</td>
+                <td>{data.course_code}</td>
+                <td>{data.course_name}</td>
                 <td>
                   <Button variant="light">
                     <Link to="/admin/course/course-details/selected-course">
