@@ -6,48 +6,61 @@ import "./CourseDetails.css";
 
 export default function CourseDetails() {
   const [course, setCourse] = useState([]);
-  const semester = ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"];
+  const semester = [1, 2, 3, 4, 5, 6, 7, 8];
   const batchYear = [
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "2025",
-    "2026",
-    "2027",
-    "2028",
-    "2029",
-    "2030",
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
   ];
 
-  const [filterSem, setFilterSem] = useState("S1");
+  const [filterSem, setFilterSem] = useState(1);
   const handleChangeFilterSem = (event) => {
     setFilterSem(event.target.value);
   };
-  const [filterBatchYear, setFilterBatchYear] = useState("2022");
+  const [filterBatchYear, setFilterBatchYear] = useState(2022);
   const handleChangeFilterBatchYear = (event) => {
     setFilterBatchYear(event.target.value);
   };
 
   useEffect(() => { 
-      async function fetchCourses(){
-      try{
-        const response = await axios.get("http://localhost:5000/api/course", {
-          params:{
-            semester: filterSem,
-            batch: filterBatchYear + 4
-          }
-        });
-        setCourse(response);
-      }catch(err){
+      function fetchCourses(){
+        axios.get('http://localhost:5000/api/course', { params: {
+          semester : filterSem,
+          batch: filterBatchYear
+        }}).then(response => {
+          setCourse(response.data.courses)
+        }).then(err => {
         console.log(err);
-      }
-    }
+    });
+  }
     fetchCourses();
   },[filterSem, filterBatchYear]);
 
+  const courseRes = course ? 
+    course.map((data, index) => (
+      <tr key={index}>
+        <td>{index + 1}</td>
+        <td>{data.course_code}</td>
+        <td>{data.course_name}</td>
+        <td>
+          <Button variant="light">
+            <Link to="/admin/course/course-details/selected-course">
+              View
+            </Link>
+          </Button>
+        </td>
+      </tr>
+    ))
+  : <div></div>
 
   return (
     <div className="container-fluid">
@@ -57,7 +70,7 @@ export default function CourseDetails() {
           <select value={filterSem} onChange={handleChangeFilterSem}>
             {semester.map((data, index) => (
               <option key={index} value={data}>
-                {data}
+                {`S${data}`}
               </option>
             ))}
           </select>
@@ -86,20 +99,7 @@ export default function CourseDetails() {
             </tr>
           </thead>
           <tbody>
-            {course.map((data, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{data.course_code}</td>
-                <td>{data.course_name}</td>
-                <td>
-                  <Button variant="light">
-                    <Link to="/admin/course/course-details/selected-course">
-                      View
-                    </Link>
-                  </Button>
-                </td>
-              </tr>
-            ))}
+              {courseRes}
           </tbody>
         </Table>
       </div>
