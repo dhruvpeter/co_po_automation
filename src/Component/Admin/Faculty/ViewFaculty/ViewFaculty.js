@@ -1,24 +1,48 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Table, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./ViewFaculty.css";
 
 export default function ViewFaculty() {
-  const faculty = [
-    {
-      id: "1000",
-      name: "Sumesh Divakaran",
-    },
-    {
-      id: "1001",
-      name: "Preethi L",
-    },
-    {
-      id: "1002",
-      name: "Sreelal",
-    },
-  ];
+  const [faculty, setFaculty] = useState();
+  useEffect(() => { 
+    function fetchFaculty(){
+      axios.get('http://localhost:5000/api/faculty')
+        .then(response => {
+          setFaculty(response.data.faculty);
+        }).then(err => {
+          console.log(err);
+        }
+      );
+    }
+    fetchFaculty();
+  }, []);
+  const facultyRes = faculty ? 
+    faculty.map((data, index) => (
+      <tr key={index}>
+        <td>{index + 1}</td>
+        <td>{data.faculty_id}</td>
+        <td>{data.faculty_name}</td>
+        <td>
+          <Button variant="light" className="button">
+            <Link to={{
+              pathname: "/admin/faculty/view-faculty/selected-faculty",
+              state: data}}>
+              View
+            </Link>
+          </Button>
+          <Button variant="light" className="button">
+            <Link to={{
+              pathname: "/admin/faculty/view-faculty/assign-faculty",
+              state: data}}>
+              Assign
+            </Link>
+          </Button>
+        </td>
+      </tr>
+    )):
+    <div></div>
   return (
     <div className="container-fluid">
       <div>
@@ -34,35 +58,9 @@ export default function ViewFaculty() {
           </tr>
         </thead>
         <tbody>
-          {faculty.map((data, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{data.id}</td>
-              <td>{data.name}</td>
-              <td>
-                <Button variant="light" className="button">
-                  <Link to="/admin/faculty/view-faculty/selected-faculty">
-                    View
-                  </Link>
-                </Button>
-                <Button variant="light" className="button">
-                  <Link to="/admin/faculty/view-faculty/assign-faculty">
-                    Assign
-                  </Link>
-                </Button>
-              </td>
-            </tr>
-          ))}
+          {facultyRes}
         </tbody>
       </Table>
     </div>
   );
 }
-
-axios.get('/user', {params: {
-
-}}).then((res) => {
-  console.log(res);
-}).then((err) => {
-  console.log(err);
-})

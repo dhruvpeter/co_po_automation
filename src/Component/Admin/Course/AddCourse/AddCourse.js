@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Table, Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function AddCourse() {
   const [CoPoMatrix, setCoPoMatrix] = useState([
@@ -21,12 +23,7 @@ export default function AddCourse() {
     [0, 0, 0, 0, 0, 0], 
   ]);
 
-  const [course, setCourse] = useState({
-    name: "Engineerting Physics",
-    code: "PH100",
-    semester: "S1",
-    faculty: ["Faculty Name", "f2"],
-  });
+  const [course, setCourse] = useState({});
 
   const handlePOChange = (po, index, i) => {
     var resultMatrix = CoPoMatrix;
@@ -42,8 +39,24 @@ export default function AddCourse() {
 
   function Submit(e) {
     e.preventDefault();
-    console.log("Submit Button clicked.");
-  }
+    axios.post('http://localhost:5000/api/course', {
+      courseCode: course.code, 
+      courseName: course.name, 
+      numberOfCos: 6,
+      deptId: course.deptId,
+      semester: course.semester,
+      co1: [CoPoMatrix[0], CoPsoMatrix[0]],
+      co2: [CoPoMatrix[1], CoPsoMatrix[1]],
+      co3: [CoPoMatrix[2], CoPsoMatrix[2]],
+      co4: [CoPoMatrix[3], CoPsoMatrix[3]],
+      co5: [CoPoMatrix[4], CoPsoMatrix[4]],
+      co6: [CoPoMatrix[5], CoPsoMatrix[5]]
+      }).then(response => {
+        setCourse(response.data.courses)
+      }).then(err => {
+      console.log(err);
+  });
+}
 
   return (
     <div className="container-fluid">
@@ -55,13 +68,14 @@ export default function AddCourse() {
             <Form.Control
               type="text"
               name="code"
-              value={course.code}
+              placeholder="PH100"
               onChange={(e) => {
                 setCourse({
                   ...course,
                   code: e.target.value,
                 });
               }}
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -69,7 +83,7 @@ export default function AddCourse() {
             <Form.Control
               type="text"
               name="name"
-              value={course.name}
+              placeholder="Engineering Physics"
               onChange={(e) => {
                 setCourse({
                   ...course,
@@ -83,11 +97,25 @@ export default function AddCourse() {
             <Form.Control
               type="text"
               name="semester"
-              value={course.semester}
+              placeholder="1"
               onChange={(e) => {
                 setCourse({
                   ...course,
                   semester: e.target.value,
+                });
+              }}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Department ID</Form.Label>
+            <Form.Control
+              type="text"
+              name="departmentid"
+              placeholder="1"
+              onChange={(e) => {
+                setCourse({
+                  ...course,
+                  deptId: e.target.value,
                 });
               }}
             />
@@ -160,7 +188,9 @@ export default function AddCourse() {
 
       <div>
         <Button variant="dark" onClick={Submit}>
-          Save
+          <Link to="/admin">
+            Save
+          </Link>
         </Button>
       </div>
     </div>
