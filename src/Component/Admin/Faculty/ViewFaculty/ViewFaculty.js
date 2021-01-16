@@ -7,7 +7,7 @@ import "./ViewFaculty.css";
 export default function ViewFaculty() {
   const [faculty, setFaculty] = useState();
   useEffect(() => { 
-    function fetchCourses(){
+    function fetchFaculty(){
       axios.get('http://localhost:5000/api/faculty')
         .then(response => {
           setFaculty(response.data.faculty);
@@ -16,7 +16,7 @@ export default function ViewFaculty() {
         }
       );
     }
-    fetchCourses();
+    fetchFaculty();
   }, []);
   const facultyRes = faculty ? 
     faculty.map((data, index) => (
@@ -26,12 +26,16 @@ export default function ViewFaculty() {
         <td>{data.faculty_name}</td>
         <td>
           <Button variant="light" className="button">
-            <Link to="/admin/faculty/view-faculty/selected-faculty">
+            <Link to={{
+              pathname: "/admin/faculty/view-faculty/selected-faculty",
+              state: data}}>
               View
             </Link>
           </Button>
           <Button variant="light" className="button">
-            <Link to="/admin/faculty/view-faculty/assign-faculty">
+            <Link to={{
+              pathname: "/admin/faculty/view-faculty/assign-faculty",
+              state: data}}>
               Assign
             </Link>
           </Button>
