@@ -36,12 +36,6 @@ export default function SelectedFaculty() {
               type="text"
               name="id"
               value={faculty.id}
-              onChange={(e) => {
-                setFaculty({
-                  ...faculty,
-                  id: e.target.value,
-                });
-              }}
             />
           </Form.Group>
           <Form.Group>
@@ -50,12 +44,6 @@ export default function SelectedFaculty() {
               type="text"
               name="name"
               value={faculty.name}
-              onChange={(e) => {
-                setFaculty({
-                  ...faculty,
-                  name: e.target.value,
-                });
-              }}
             />
           </Form.Group>
           <Form.Group>
@@ -64,12 +52,6 @@ export default function SelectedFaculty() {
               type="text"
               name="dob"
               value={faculty.department}
-              onChange={(e) => {
-                setFaculty({
-                  ...faculty,
-                  dob: e.target.value,
-                });
-              }}
             />
           </Form.Group>
           <Form.Group>
@@ -78,12 +60,6 @@ export default function SelectedFaculty() {
               type="text"
               name="address"
               value={faculty.email}
-              onChange={(e) => {
-                setFaculty({
-                  ...faculty,
-                  address: e.target.value,
-                });
-              }}
             />
           </Form.Group>
         </Form>
