@@ -28,7 +28,7 @@ export default function AddMark() {
       </div>
       <div>
         <Link to="/faculty/student/add-mark/final-sem">
-          Upload Final Sem marks
+          Upload Final Sem Exam marks
         </Link>
       </div>
     </div>
