@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Table, Form, Button, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from 'axios';
+import axios from "axios";
 
 export default function AddCourse() {
   const [CoPoMatrix, setCoPoMatrix] = useState([
@@ -13,7 +13,7 @@ export default function AddCourse() {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
 
-  const [course, setCourse] = useState({deptId: 1});
+  const [course, setCourse] = useState({ deptId: 1 });
   const [show, setShow] = useState(false);
 
   const handlePOChange = (po, index, i) => {
@@ -22,33 +22,36 @@ export default function AddCourse() {
     setCoPoMatrix(resultMatrix);
   };
 
-
   function Submit(e) {
     e.preventDefault();
-    axios.post('http://localhost:5000/api/course', {
-      courseCode: course.code, 
-      courseName: course.name, 
-      numberOfCos: 6,
-      deptId: course.deptId,
-      semester: course.semester,
-      co1: CoPoMatrix[0],
-      co2: CoPoMatrix[1],
-      co3: CoPoMatrix[2],
-      co4: CoPoMatrix[3],
-      co5: CoPoMatrix[4],
-      co6: CoPoMatrix[5]
-      }).then(res => {
+    axios
+      .post("http://localhost:5000/api/course", {
+        courseCode: course.code,
+        courseName: course.name,
+        numberOfCos: 6,
+        deptId: course.deptId,
+        semester: course.semester,
+        co1: CoPoMatrix[0],
+        co2: CoPoMatrix[1],
+        co3: CoPoMatrix[2],
+        co4: CoPoMatrix[3],
+        co5: CoPoMatrix[4],
+        co6: CoPoMatrix[5],
+      })
+      .then((res) => {
         console.log(res);
         setShow(true);
-      }).then(err => {
-      console.log(err);
-  });
-
-}
+      })
+      .then((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <div className="container-fluid">
-      <div><h3>Add Course</h3></div>
+      <div>
+        <h3>Add Course</h3>
+      </div>
       <div className="form">
         <Form>
           <Form.Group>
@@ -56,7 +59,6 @@ export default function AddCourse() {
             <Form.Control
               type="text"
               name="code"
-              placeholder="PH100"
               onChange={(e) => {
                 setCourse({
                   ...course,
@@ -71,7 +73,7 @@ export default function AddCourse() {
             <Form.Control
               type="text"
               name="name"
-              placeholder="Engineering Physics"
+              required
               onChange={(e) => {
                 setCourse({
                   ...course,
@@ -85,7 +87,7 @@ export default function AddCourse() {
             <Form.Control
               type="text"
               name="semester"
-              placeholder="1"
+              required
               onChange={(e) => {
                 setCourse({
                   ...course,
@@ -99,7 +101,7 @@ export default function AddCourse() {
             <Form.Control
               type="text"
               name="departmentid"
-              placeholder="1"
+              required
               onChange={(e) => {
                 setCourse({
                   ...course,
@@ -132,6 +134,7 @@ export default function AddCourse() {
                       type="text"
                       name="PO"
                       placeholder={po}
+                      required
                       onChange={(e) => handlePOChange(e.target.value, index, i)}
                     />
                   </td>
@@ -142,22 +145,20 @@ export default function AddCourse() {
         </Table>
       </div>
       <div>
-        <Button variant="dark" onClick={Submit}>
+        <Button type="submit" variant="dark" onClick={Submit}>
           Save
         </Button>
       </div>
       <div>
-      <Alert show={show} variant="success">
-        <p>
-          Course Successfully Added !
-        </p>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button onClick={() => setShow(false)} variant="outline-success">
-            Dismiss
-          </Button>
-        </div>
-      </Alert>
+        <Alert show={show} variant="success">
+          <p>Course Successfully Added !</p>
+          <hr />
+          <div className="d-flex justify-content-end">
+            <Button onClick={() => setShow(false)} variant="outline-success">
+              Dismiss
+            </Button>
+          </div>
+        </Alert>
       </div>
     </div>
   );
