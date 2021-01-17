@@ -16,18 +16,18 @@ export default function FinalSem() {
 
     try {
 
-      console.log(filterCourse);
+      // console.log(filterCourse);
 
       const formData = new FormData(form.current);
 
       console.log(formData);
-      formData.append("courseCode", filterCourse);
+      // formData.append("courseCode", filterCourse);
     //   formData.append("year", "2020");
       // formData.append("batch", "2022");
-      formData.append("assignmentNo", "2");
+      // formData.append("assignmentNo", "2");
 
       const res = await axios.post(
-        "http://localhost:5000/api/marks/assignment",
+        "http://localhost:5000/api/marks/endsemexam",
         formData
       );
 
@@ -37,40 +37,40 @@ export default function FinalSem() {
     }
   }
 
-  const [faculty, setFaculty] = useState({
-    id: "TVE18",
-    name: "Sreelal",
-    course: [
-      { code: "PH100", name: "Physics" },
-      { code: "CH", name: "Chemistry" },
-      { code: "CS301", name: "Theory of computation" }
-    ],
-  })
+  // const [faculty, setFaculty] = useState({
+  //   id: "TVE18",
+  //   name: "Sreelal",
+  //   course: [
+  //     { code: "PH100", name: "Physics" },
+  //     { code: "CH", name: "Chemistry" },
+  //     { code: "CS301", name: "Theory of computation" }
+  //   ],
+  // })
 
-  const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
+  // const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
 
   // console.log(filterCourse);
 
 
-  const handleChangeFilterCourse = (event) => {
-    setFilterCourse(event.target.value);
-    console.log(event.target.value);
-  };
+  // const handleChangeFilterCourse = (event) => {
+  //   setFilterCourse(event.target.value);
+  //   console.log(event.target.value);
+  // };
   return (
     <div id="container-fluid">
       <div>
         <h3>Upload Final Sem Exam Marks</h3>
       </div>
       <div>
-        <h5>Choose course:</h5>
+        {/* <h5>Choose course:</h5> */}
         <label>
-          <select value={filterCourse} onChange={handleChangeFilterCourse}>
+          {/* <select value={filterCourse} onChange={handleChangeFilterCourse}>
             {faculty.course.map((data, index) => (
               <option key={index} value={data.code}>
                 {data.name}
               </option>
             ))}
-          </select>
+          </select> */}
         </label>
       </div>
       <form ref={form} onSubmit={handleSubmit}>
