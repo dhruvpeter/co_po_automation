@@ -36,14 +36,14 @@ export default function Internal1() {
     }
   }
 
-  const [faculty, setFaculty] = useState({
+  const faculty = {
     id: "TVE18",
     name: "Sreelal",
     course: [
       { code: "PH100", name: "Physics" },
       { code: "CH", name: "Chemistry" },
     ],
-  });
+  };
 
   // const faculty = {
   //   id: "TVE18",
