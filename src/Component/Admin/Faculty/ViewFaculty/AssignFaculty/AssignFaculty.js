@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Table, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function AssignFaculty() {
+  console.log(useLocation().state);
   const [faculty, setFaculty] = useState({
     id: "1000",
     name: "Sumesh Divakaran",
