@@ -54,7 +54,9 @@ export default function CourseDetails() {
         <td>{data.course_name}</td>
         <td>
           <Button variant="light">
-            <Link to="/admin/course/course-details/selected-course">
+            <Link to={{
+              pathname: "/admin/course/course-details/selected-course",
+              state: data}}>
               View
             </Link>
           </Button>

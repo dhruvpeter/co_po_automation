@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table, Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from 'axios';
 
 export default function SelectedCourse() {
+  const data = useLocation().state;
+  
+  useEffect(() => {
+    function fetchCourseInfo(){
+      axios.get('https://localhost:5000/api/course', {
+        params:{
+          semester: data.semester,
+          batch: data.passout_year,
+        }
+      })
+    }
+  })
   const [CoPoMatrix, setCoPoMatrix] = useState([
     [1, 2, 3, 1, 2, 3, 2, 1, 1, 1, 1, 1],
     [2, 3, 3, 0, 0, 0, 2, 3, 1, 2, 3, 1],
   ]);
 
-  const [CoPsoMatrix, setCoPsoMatrix] = useState([
-    [1, 2, 3, 1, 2, 3],
-    [2, 3, 3, 0, 0, 0],
-  ]);
 
   function Submit(e) {
     e.preventDefault();
@@ -42,11 +51,6 @@ export default function SelectedCourse() {
     setCoPoMatrix(resultMatrix);
   };
 
-  const handlePSOChange = (pso, index, i) => {
-    var resultMatrixPSO = CoPsoMatrix;
-    resultMatrixPSO[index][i] = Number(pso);
-    setCoPsoMatrix(resultMatrixPSO);
-  };
 
   return (
     <div className="container-fluid">
@@ -131,38 +135,6 @@ export default function SelectedCourse() {
                       name="PO"
                       placeholder={po}
                       onChange={(e) => handlePOChange(e.target.value, index, i)}
-                    />
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
-
-      <div className="table">
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>#</th>
-              {Array.from({ length: 6 }).map((_, index) => (
-                <th key={index}>PSO{index + 1}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {CoPsoMatrix.map((data, index) => (
-              <tr key={index}>
-                <td>CO{index + 1}</td>
-                {data.map((pso, i) => (
-                  <td key={i}>
-                    <Form.Control
-                      type="text"
-                      name="PSO"
-                      placeholder={pso}
-                      onChange={(e) =>
-                        handlePSOChange(e.target.value, index, i)
-                      }
                     />
                   </td>
                 ))}

@@ -13,16 +13,7 @@ export default function AddCourse() {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
 
-  const [CoPsoMatrix, setCoPsoMatrix] = useState([
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0], 
-  ]);
-
-  const [course, setCourse] = useState({});
+  const [course, setCourse] = useState({deptId: 1});
   const [show, setShow] = useState(false);
 
   const handlePOChange = (po, index, i) => {
@@ -31,11 +22,6 @@ export default function AddCourse() {
     setCoPoMatrix(resultMatrix);
   };
 
-  const handlePSOChange = (pso, index, i) => {
-    var resultMatrixPSO = CoPsoMatrix;
-    resultMatrixPSO[index][i] = Number(pso);
-    setCoPsoMatrix(resultMatrixPSO);
-  };
 
   function Submit(e) {
     e.preventDefault();
@@ -45,13 +31,14 @@ export default function AddCourse() {
       numberOfCos: 6,
       deptId: course.deptId,
       semester: course.semester,
-      co1: [CoPoMatrix[0], CoPsoMatrix[0]],
-      co2: [CoPoMatrix[1], CoPsoMatrix[1]],
-      co3: [CoPoMatrix[2], CoPsoMatrix[2]],
-      co4: [CoPoMatrix[3], CoPsoMatrix[3]],
-      co5: [CoPoMatrix[4], CoPsoMatrix[4]],
-      co6: [CoPoMatrix[5], CoPsoMatrix[5]]
+      co1: CoPoMatrix[0],
+      co2: CoPoMatrix[1],
+      co3: CoPoMatrix[2],
+      co4: CoPoMatrix[3],
+      co5: CoPoMatrix[4],
+      co6: CoPoMatrix[5]
       }).then(res => {
+        console.log(res);
         setShow(true);
       }).then(err => {
       console.log(err);
@@ -154,39 +141,6 @@ export default function AddCourse() {
           </tbody>
         </Table>
       </div>
-
-      <div className="table">
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>#</th>
-              {Array.from({ length: 3 }).map((_, index) => (
-                <th key={index}>PSO{index + 1}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {CoPsoMatrix.map((data, index) => (
-              <tr key={index}>
-                <td>CO{index + 1}</td>
-                {data.map((pso, i) => (
-                  <td key={i}>
-                    <Form.Control
-                      type="text"
-                      name="PSO"
-                      placeholder={pso}
-                      onChange={(e) =>
-                        handlePSOChange(e.target.value, index, i)
-                      }
-                    />
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
-
       <div>
         <Button variant="dark" onClick={Submit}>
           Save
