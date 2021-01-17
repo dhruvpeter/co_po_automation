@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 
 export default function Internal1() {
