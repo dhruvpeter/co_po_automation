@@ -88,7 +88,7 @@ export default function ViewStudent() {
         <label>
           <select value={filterCourse} onChange={handleChangeFilterCourse}>
             {faculty.course.map((data, index) => (
-              <option key={index+1} value={data}>
+              <option key={index} value={data}>
                 {data}
               </option>
             ))}

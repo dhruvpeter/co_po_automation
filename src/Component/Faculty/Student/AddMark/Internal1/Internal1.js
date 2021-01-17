@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useRef } from "react";
+// import ReactDOM from "react-dom";
 import axios from "axios";
 
 export default function Internal1() {
@@ -15,12 +15,15 @@ export default function Internal1() {
     console.log(file);
 
     try {
+
+      console.log(filterCourse);
+
       const formData = new FormData(form.current);
 
       console.log(formData);
-      formData.append("courseCode", filterCourse.code);
-      //   formData.append("year", "2020");
-      formData.append("batch", "2022");
+      formData.append("courseCode", filterCourse);
+    //   formData.append("year", "2020");
+      // formData.append("batch", "2022");
       formData.append("internalExamNo", "1");
 
       const res = await axios.post(
@@ -33,18 +36,32 @@ export default function Internal1() {
       console.log(err);
     }
   }
-  const faculty = {
+
+  const [faculty, setFaculty] = useState({
     id: "TVE18",
     name: "Sreelal",
     course: [
       { code: "PH100", name: "Physics" },
       { code: "CH", name: "Chemistry" },
     ],
-  };
-  const [filterCourse, setFilterCourse] = useState(faculty.course[0]);
+  })
+
+  // const faculty = {
+  //   id: "TVE18",
+  //   name: "Sreelal",
+  //   course: [
+  //     { code: "PH100", name: "Physics" },
+  //     { code: "CH", name: "Chemistry" },
+  //   ],
+  // };
+  const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
+
+  // console.log(filterCourse);
+
+
   const handleChangeFilterCourse = (event) => {
     setFilterCourse(event.target.value);
-    console.log(filterCourse);
+    console.log(event.target.value);
   };
   return (
     <div id="container-fluid">
@@ -54,9 +71,9 @@ export default function Internal1() {
       <div>
         <h5>Choose course:</h5>
         <label>
-          <select value={filterCourse.name} onChange={handleChangeFilterCourse}>
+          <select value={filterCourse} onChange={handleChangeFilterCourse}>
             {faculty.course.map((data, index) => (
-              <option key={index} value={data}>
+              <option key={index} value={data.code}>
                 {data.name}
               </option>
             ))}
@@ -65,13 +82,21 @@ export default function Internal1() {
       </div>
       <form ref={form} onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="year">Enter year: </label>
+          <label htmlFor="year">Course year: </label>
           <input type="text" name="year" required />
         </div>
-        <input type="file" name="file" onChange={handleUpload} />
-        <button type="submit" onClick={handleSubmit}>
-          Submit
-        </button>
+        <div>
+          <label htmlFor="batch">Batch: </label>
+          <input type="text" name="batch" required />
+        </div>
+        <div>
+          <input type="file" name="file" onChange={handleUpload} />
+        </div>
+        <div>
+          <button type="submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
