@@ -36,14 +36,14 @@ export default function Internal1() {
     }
   }
 
-  const [faculty, setFaculty] = useState({
+  const faculty = {
     id: "TVE18",
     name: "Sreelal",
     course: [
       { code: "PH100", name: "Physics" },
       { code: "CH", name: "Chemistry" },
     ],
-  });
+  };
 
   // const faculty = {
   //   id: "TVE18",
@@ -88,7 +88,7 @@ export default function Internal1() {
           <input type="text" name="batch" required />
         </div>
         <div>
-          <input type="file" name="file" onChange={handleUpload} />
+          <input type="file" name="file" onChange={handleUpload} required/>
         </div>
         <div>
           <button type="submit" onClick={handleSubmit}>

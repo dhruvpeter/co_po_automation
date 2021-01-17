@@ -15,14 +15,13 @@ export default function Assignment1() {
     console.log(file);
 
     try {
-
       console.log(filterCourse);
 
       const formData = new FormData(form.current);
 
       console.log(formData);
       formData.append("courseCode", filterCourse);
-    //   formData.append("year", "2020");
+      //   formData.append("year", "2020");
       // formData.append("batch", "2022");
       formData.append("assignmentNo", "1");
 
@@ -37,20 +36,18 @@ export default function Assignment1() {
     }
   }
 
-  const [faculty, setFaculty] = useState({
+  const faculty = {
     id: "TVE18",
     name: "Sreelal",
     course: [
       { code: "PH100", name: "Physics" },
       { code: "CH", name: "Chemistry" },
-      { code: "CS301", name: "Theory of computation" }
     ],
-  })
+  };
 
   const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
 
   // console.log(filterCourse);
-
 
   const handleChangeFilterCourse = (event) => {
     setFilterCourse(event.target.value);
@@ -83,7 +80,7 @@ export default function Assignment1() {
           <input type="text" name="batch" required />
         </div>
         <div>
-          <input type="file" name="file" onChange={handleUpload} />
+          <input type="file" name="file" onChange={handleUpload} required />
         </div>
         <div>
           <button type="submit" onClick={handleSubmit}>

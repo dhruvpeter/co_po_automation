@@ -4,6 +4,7 @@ import BootstrapTable from "react-bootstrap-table-next";
 import axios from 'axios'
 
 export default function AssignStudent() {
+<<<<<<< HEAD
   const [student, setStudent] = useState([]);
   const [faculty, setFaculty] = useState({
     id: "2",
@@ -36,6 +37,44 @@ export default function AssignStudent() {
   },[]);
 
   const [selectedStudents, setSelectedStudents] = useState(() => {
+=======
+  const [faculty, setFaculty] = useState({
+    id: "TVE18",
+    name: "Sreelal",
+    course: [
+      { code: "PH100", name: "Physics" },
+      { code: "CH", name: "Chemistry" },
+    ],
+  });
+  const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
+  const handleChangeFilterCourse = (event) => {
+    setFilterCourse(event.target.value);
+    console.log(event.target.value);
+  };
+  const student = [
+    {
+      regNo: "TVE18CS017",
+      name: "Dhanesh P S",
+      admissionYear: "2018",
+    },
+    {
+      regNo: "TVE18CS018",
+      name: "Dhruv Eldho Peter",
+      admissionYear: "2018",
+    },
+    {
+      regNo: "TVE18CS031",
+      name: "Lukose Jacob",
+      admissionYear: "2018",
+    },
+    {
+      regNo: "TVE18CS058",
+      name: "Sheen Xavier A",
+      admissionYear: "2018",
+    },
+  ];
+  const [selectedStudents, setStudent] = useState(() => {
+>>>>>>> 7db049afc157bcd626a541e984bce920346b8f2a
     const boolList = [];
     for (let i = 0; i < student.length; i++) boolList.push(false);
     return boolList;
@@ -91,6 +130,7 @@ export default function AssignStudent() {
       setSelectedStudents(newList);
     },
   };
+<<<<<<< HEAD
   // const faculty = {
   //   id: "TVE18",
   //   name: "Sreelal",
@@ -100,6 +140,9 @@ export default function AssignStudent() {
   const handleChangeFilterCourse = (event) => {
     setFilterCourse(event.target.value);
   };
+=======
+
+>>>>>>> 7db049afc157bcd626a541e984bce920346b8f2a
   function Submit(e) {
     // Observe hooks for correct changes
     let selectList = selectedStudents;
@@ -124,8 +167,8 @@ export default function AssignStudent() {
         <label>
           <select value={filterCourse} onChange={handleChangeFilterCourse}>
             {faculty.course.map((data, index) => (
-              <option key={index} value={data}>
-                {data}
+              <option key={index} value={data.code}>
+                {data.name}
               </option>
             ))}
           </select>
@@ -154,7 +197,7 @@ export default function AssignStudent() {
         />
       </div>
       <div>
-        <Button variant="dark" onClick={Submit}>
+        <Button type="submit" variant="dark" onClick={Submit}>
           Save
         </Button>
       </div>

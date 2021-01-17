@@ -2,12 +2,12 @@ import React,{ useState } from "react";
 import { Form, Button, Dropdown, DropdownButton, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-
+import "./AddFaculty.css"
 export default function SelectedFaculty() {
 
   const [faculty, setFaculty] = useState({});
   const [admin, setAdmin] = useState('Is an Administrator ?');
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   function Submit(e) {
     e.preventDefault();
@@ -85,12 +85,11 @@ export default function SelectedFaculty() {
       <div>       
       <Button variant="primary" onClick={Submit}>Save</Button>
       </div> 
-      <div>
-      <Alert show={show} variant="success">
+      <div className="dialogue-box">
+      <Alert show={show} variant="success" >
         <p>
           Faculty Successfully Added !
         </p>
-        <hr />
         <div className="d-flex justify-content-end">
           <Button onClick={() => setShow(false)} variant="outline-success">
             Dismiss
