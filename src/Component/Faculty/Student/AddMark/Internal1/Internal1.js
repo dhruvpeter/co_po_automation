@@ -19,7 +19,7 @@ export default function Internal1() {
 
       console.log(formData);
       formData.append("courseCode", filterCourse.code);
-    //   formData.append("year", "2020");
+      //   formData.append("year", "2020");
       formData.append("batch", "2022");
       formData.append("internalExamNo", "1");
 
@@ -44,6 +44,7 @@ export default function Internal1() {
   const [filterCourse, setFilterCourse] = useState(faculty.course[0]);
   const handleChangeFilterCourse = (event) => {
     setFilterCourse(event.target.value);
+    console.log(filterCourse);
   };
   return (
     <div id="container-fluid">
