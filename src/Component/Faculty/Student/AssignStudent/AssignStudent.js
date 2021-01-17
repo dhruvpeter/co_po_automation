@@ -149,7 +149,7 @@ export default function AssignStudent() {
         />
       </div>
       <div>
-        <Button variant="dark" onClick={Submit}>
+        <Button type="submit" variant="dark" onClick={Submit}>
           Save
         </Button>
       </div>

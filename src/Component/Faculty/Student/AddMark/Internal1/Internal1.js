@@ -88,7 +88,7 @@ export default function Internal1() {
           <input type="text" name="batch" required />
         </div>
         <div>
-          <input type="file" name="file" onChange={handleUpload} />
+          <input type="file" name="file" onChange={handleUpload} required/>
         </div>
         <div>
           <button type="submit" onClick={handleSubmit}>
