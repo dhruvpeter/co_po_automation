@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function SelectedFaculty() {
   const location = useLocation().state;
-  const [faculty, setFaculty] = useState({
+  const faculty = {
     id: location.faculty_id,
     name: location.faculty_name,
     department: location.dept_name,
     email: location.faculty_email,
-  });
+  };
 
   function Submit(e) {
     e.preventDefault();

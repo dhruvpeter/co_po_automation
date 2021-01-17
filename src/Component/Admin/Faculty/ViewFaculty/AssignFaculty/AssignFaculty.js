@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,45 +22,29 @@ export default function AssignFaculty() {
   //     course: [],
   //   };
 
-  const course = [
-    {
-      name: "Engineering Physics",
-      code: "AAA",
-      semester: "S1",
-    },
-    {
-      name: "Data Structures",
-      code: "AAA",
-      semester: "S3",
-    },
-    {
-      name: "Theory of Computation",
-      code: "AAA",
-      semester: "S5",
-    },
-  ];
-  const year = ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"];
-  const [filterYear, setFilterYear] = useState("2018");
+  const [course, setCourse] = useState([]);
+  useEffect(() => {
+
+  }, [])
+  const year = [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+  const [filterYear, setFilterYear] = useState(2018);
   const handleChangeFilterYear = (event) => {
     setFilterYear(event.target.value);
   };
-  const semester = ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"];
-  const [filterSem, setFilterSem] = useState("S1");
+  const semester = [1, 2, 3, 4, 5, 6, 7, 8];
+  const [filterSem, setFilterSem] = useState(1);
   const handleChangeFilterSem = (event) => {
     setFilterSem(event.target.value);
   };
 
-  const [filterCourse, setFilterCourse] = useState("----");
+  const [selectedCourse, setSCourse] = useState();
+  const handleChangeCourse =  (event) => {
+    setCourse(event.target.value);
+  }
 
-  const handleChangeFilterCourse = (event) => {
-    setFilterCourse(event.target.value);
-  };
-  const filteredCourseWithSem = course.filter(function (course) {
-    return course.semester === filterSem;
-  });
   const selectCourse = (event) => {
     event.preventDefault();
-    const newItem = filteredCourseWithSem[0];
+    const newItem = [];
     newItem.year = filterYear;
 
     let allItems = faculty.course;
@@ -113,22 +97,22 @@ export default function AssignFaculty() {
           </select>
         </label>
         <label>
-          <select value={filterCourse} onChange={handleChangeFilterCourse}>
-            <option key={"Select"} value="Select">
-              Select Course
-            </option>
-            {filteredCourseWithSem.map((data, index) => (
-              <option key={index} value={data.name}>
-                {data.name}
-              </option>
-            ))}
-          </select>
-        </label>
         <label>
           <select value={filterYear} onChange={handleChangeFilterYear}>
             {year.map((data, index) => (
               <option key={index} value={data}>
                 {data}
+              </option>
+            ))}
+          </select>
+        </label>
+          <select value={selectedCourse} onChange={handleChangeCourse}>
+            <option key={"Select"} value="Select">
+              Select Course
+            </option>
+            {course.map((data, index) => (
+              <option key={index} value={data.name}>
+                {data.name}
               </option>
             ))}
           </select>

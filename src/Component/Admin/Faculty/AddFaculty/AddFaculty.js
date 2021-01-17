@@ -1,48 +1,32 @@
 import React,{ useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Dropdown, DropdownButton, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from 'axios';
 
 export default function SelectedFaculty() {
 
-  const [faculty, setFaculty] = useState({
-    id: "TVE18",
-    name: "Sreelal",
-    dob: "12-12-1983",
-    address: "abc xyz blz blz blz",
-    gender: "M",
-    contact: "9876543210",
-  });
+  const [faculty, setFaculty] = useState({});
+  const [admin, setAdmin] = useState('Is an Administrator ?');
+  const [show, setShow] = useState(false);
 
   function Submit(e) {
     e.preventDefault();
-    console.log('Submit Button clicked.');
-    }
+    axios.post("http://localhost:5000/api/faculty", faculty )
+    .then(res => setShow(true))
+    .then(err => console.log(err));
 
+    }
+  
   return (
     <div className="container-fluid">
       <div><h3>Add Faculty</h3></div>
       <div className="form">
         <Form>
-          <Form.Group>
-            <Form.Label>Faculty Id</Form.Label>
-            <Form.Control
-              type="text"
-              name="id"
-              value={faculty.id}
-              onChange={(e) => {
-                setFaculty({
-                  ...faculty,
-                  id: e.target.value,
-                });
-              }}
-            />
-            </Form.Group>
             <Form.Group>
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
               name="name"
-              value={faculty.name}
               onChange={(e) => {
                 setFaculty({
                   ...faculty,
@@ -52,71 +36,68 @@ export default function SelectedFaculty() {
             />
             </Form.Group>
             <Form.Group>
-            <Form.Label>DOB</Form.Label>
+            <Form.Label>Email ID</Form.Label>
             <Form.Control
-              type="text"
-              name="dob"
-              value={faculty.dob}
+              type="email"
+              name="email"
               onChange={(e) => {
                 setFaculty({
                   ...faculty,
-                  dob: e.target.value,
+                  email: e.target.value,
                 });
               }}
             />
             </Form.Group>
             <Form.Group>
-            <Form.Label>Address</Form.Label>
+            <Form.Label>Department ID</Form.Label>
             <Form.Control
               type="text"
-              name="address"
-              value={faculty.address}
+              name="deptid"
               onChange={(e) => {
                 setFaculty({
                   ...faculty,
-                  address: e.target.value,
+                  dept: Number(e.target.value),
                 });
               }}
             />
             </Form.Group>
             <Form.Group>
-            <Form.Label>Gender</Form.Label>
-            <Form.Control
-              type="text"
-              name="gender"
-              value={faculty.gender}
-              onChange={(e) => {
-                setFaculty({
-                  ...faculty,
-                  gender: e.target.value,
-                });
-              }}
-            />
+            <DropdownButton id="dropdown-basic-button" variant="secondary" title={admin}>
+              <Dropdown.Item onClick={() => {setFaculty({...faculty, admin: 1}); setAdmin("Administrator")}}>Yes</Dropdown.Item>
+              <Dropdown.Item onClick={() => {setFaculty({...faculty, admin: 0}); setAdmin("Non-Administrator")}}>No</Dropdown.Item>
+            </DropdownButton>
             </Form.Group>
             <Form.Group>
-            <Form.Label>Contact</Form.Label>
+            <Form.Label>Password</Form.Label>
             <Form.Control
-              type="text"
-              name="contact"
-              value={faculty.contact}
+              type="password"
+              name="password"
               onChange={(e) => {
                 setFaculty({
                   ...faculty,
-                  contact: e.target.value,
+                  password: e.target.value,
                 });
               }}
             />
             </Form.Group>
-          
         </Form>
       </div>
-
       <div>       
       <Button variant="primary" onClick={Submit}>Save</Button>
       </div> 
-
-
-
+      <div>
+      <Alert show={show} variant="success">
+        <p>
+          Faculty Successfully Added !
+        </p>
+        <hr />
+        <div className="d-flex justify-content-end">
+          <Button onClick={() => setShow(false)} variant="outline-success">
+            Dismiss
+          </Button>
+        </div>
+      </Alert>
+      </div>
     </div>          
               
   );
