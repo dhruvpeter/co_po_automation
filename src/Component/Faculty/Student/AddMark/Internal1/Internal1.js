@@ -15,14 +15,13 @@ export default function Internal1() {
     console.log(file);
 
     try {
-
       console.log(filterCourse);
 
       const formData = new FormData(form.current);
 
       console.log(formData);
       formData.append("courseCode", filterCourse);
-    //   formData.append("year", "2020");
+      //   formData.append("year", "2020");
       // formData.append("batch", "2022");
       formData.append("internalExamNo", "1");
 
@@ -44,7 +43,7 @@ export default function Internal1() {
       { code: "PH100", name: "Physics" },
       { code: "CH", name: "Chemistry" },
     ],
-  })
+  });
 
   // const faculty = {
   //   id: "TVE18",
@@ -57,7 +56,6 @@ export default function Internal1() {
   const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
 
   // console.log(filterCourse);
-
 
   const handleChangeFilterCourse = (event) => {
     setFilterCourse(event.target.value);

@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 export default function ViewStudent() {
-  const faculty = {
+  const [faculty, setFaculty] = useState({
     id: "TVE18",
     name: "Sreelal",
-    course: ["Physics", "Chemistry","Maths"],
-  };
-  const [filterCourse, setFilterCourse] = useState("Physics");
+    course: [
+      { code: "PH100", name: "Physics" },
+      { code: "CH", name: "Chemistry" },
+    ],
+  });
+  const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
   const handleChangeFilterCourse = (event) => {
     setFilterCourse(event.target.value);
-    console.log(filterCourse);
+    console.log(event.target.value);
   };
   const student = [
     {
@@ -88,8 +91,8 @@ export default function ViewStudent() {
         <label>
           <select value={filterCourse} onChange={handleChangeFilterCourse}>
             {faculty.course.map((data, index) => (
-              <option key={index} value={data}>
-                {data}
+              <option key={index} value={data.code}>
+                {data.name}
               </option>
             ))}
           </select>
