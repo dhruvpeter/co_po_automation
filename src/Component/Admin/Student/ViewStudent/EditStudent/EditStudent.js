@@ -31,15 +31,6 @@ export default function SelectedFaculty() {
   };
 
 
-  function Submit(e) {
-    e.preventDefault();
-    console.log('Submit Button clicked.');
-    }
-
-    function Delete(e) {
-        e.preventDefault();
-        console.log('Delete Button clicked.');  
-    }  
      
     function Back(e) {
       e.preventDefault();
@@ -56,6 +47,7 @@ export default function SelectedFaculty() {
               type="text"
               name="name"
               value={student.name}
+              readOnly
               onChange={(e) => {
                 setStudent({
                   ...student,
@@ -70,6 +62,7 @@ export default function SelectedFaculty() {
               type="text"
               name="regno"
               value={student.regno}
+              readOnly
               onChange={(e) => {
                 setStudent({
                   ...student,
@@ -100,9 +93,7 @@ export default function SelectedFaculty() {
       <div>  
       <Button variant="dark" onClick={Back}>
           <Link to="/admin/student/view-student">Back</Link>
-        </Button>{" "}       
-      <Button variant="primary" onClick={Delete}>Delete</Button>{' '}
-      <Button variant="primary" onClick={Submit}>Save</Button>
+        </Button>
       </div> 
 
       
