@@ -22,7 +22,7 @@ export default function AdminLinks() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/admin" exact component={Home} />
         <Route
           path="/admin/course/course-details"
           exact

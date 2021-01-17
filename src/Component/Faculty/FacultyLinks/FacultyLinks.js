@@ -17,7 +17,7 @@ export default function FacultyLinks() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/faculty" exact component={Home} />
         <Route path="/faculty/student/add-mark" exact component={AddMark} />
         <Route path="/faculty/student/add-mark/internal-1" exact component={Internal1} />
         <Route path="/faculty/student/add-mark/internal-2" exact component={Internal2} />

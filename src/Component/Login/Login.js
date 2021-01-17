@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import axios from 'axios';
 import "./Login.css";
 
 export default function Login() {
@@ -14,8 +15,15 @@ export default function Login() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(email);
-    console.log(password);
+
+    axios.post("http://localhost:5000/auth/login", {
+      email,
+      password
+    }).then(res => {
+      const val = res.data.user.admin;
+      window.location.assign(val ? 'http://localhost:3000/admin': 'http://localhost:3000/faculty');
+    })
+    .then(err => console.log(err));
   }
   const [userValue, setUserValue] = useState("1");
 
