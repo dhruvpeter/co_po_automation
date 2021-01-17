@@ -4,11 +4,12 @@ export default function ViewStudent() {
   const faculty = {
     id: "TVE18",
     name: "Sreelal",
-    course: ["Physics", "Chemistry"],
+    course: ["Physics", "Chemistry","Maths"],
   };
-  const [filterCourse, setFilterCourse] = useState(faculty.course[0]);
+  const [filterCourse, setFilterCourse] = useState("Physics");
   const handleChangeFilterCourse = (event) => {
     setFilterCourse(event.target.value);
+    console.log(filterCourse);
   };
   const student = [
     {
