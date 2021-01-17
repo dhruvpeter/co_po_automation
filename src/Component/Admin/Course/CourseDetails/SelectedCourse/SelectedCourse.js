@@ -23,15 +23,6 @@ export default function SelectedCourse() {
   ]);
 
 
-  function Submit(e) {
-    e.preventDefault();
-    console.log("Submit Button clicked.");
-  }
-
-  function Delete(e) {
-    e.preventDefault();
-    console.log("Delete Button clicked.");
-  }
 
   function Back(e) {
     e.preventDefault();
@@ -62,6 +53,7 @@ export default function SelectedCourse() {
               type="text"
               name="code"
               value={course.code}
+              readOnly
               onChange={(e) => {
                 setCourse({
                   ...course,
@@ -76,6 +68,7 @@ export default function SelectedCourse() {
               type="text"
               name="name"
               value={course.name}
+              readOnly
               onChange={(e) => {
                 setCourse({
                   ...course,
@@ -90,6 +83,7 @@ export default function SelectedCourse() {
               type="text"
               name="semester"
               value={course.semester}
+              readOnly
               onChange={(e) => {
                 setCourse({
                   ...course,
@@ -133,7 +127,8 @@ export default function SelectedCourse() {
                     <Form.Control
                       type="text"
                       name="PO"
-                      placeholder={po}
+                      value={po}
+                      readOnly
                       onChange={(e) => handlePOChange(e.target.value, index, i)}
                     />
                   </td>
@@ -147,12 +142,6 @@ export default function SelectedCourse() {
       <div>
         <Button variant="dark" onClick={Back}>
           <Link to="/admin/course/course-details">Back</Link>
-        </Button>{" "} 
-        <Button variant="dark" onClick={Delete}>
-          Delete
-        </Button>{" "}
-        <Button variant="dark" onClick={Submit}>
-          Save
         </Button>
       </div>
     </div>
