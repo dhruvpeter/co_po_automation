@@ -29,6 +29,7 @@ export default function CourseDetails() {
   const [filterBatchYear, setFilterBatchYear] = useState(2022);
   const handleChangeFilterBatchYear = (event) => {
     setFilterBatchYear(event.target.value);
+    console.log(event.target.value);
   };
 
   useEffect(() => { 
