@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Table, Form, Button } from "react-bootstrap";
+import { Table, Form, Button, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -24,6 +24,7 @@ export default function AddCourse() {
   ]);
 
   const [course, setCourse] = useState({});
+  const [show, setShow] = useState(false);
 
   const handlePOChange = (po, index, i) => {
     var resultMatrix = CoPoMatrix;
@@ -51,11 +52,12 @@ export default function AddCourse() {
       co4: [CoPoMatrix[3], CoPsoMatrix[3]],
       co5: [CoPoMatrix[4], CoPsoMatrix[4]],
       co6: [CoPoMatrix[5], CoPsoMatrix[5]]
-      }).then(response => {
-        setCourse(response.data.courses)
+      }).then(res => {
+        setShow(true);
       }).then(err => {
       console.log(err);
   });
+
 }
 
   return (
@@ -192,6 +194,19 @@ export default function AddCourse() {
             Save
           </Link>
         </Button>
+      </div>
+      <div>
+      <Alert show={show} variant="success">
+        <p>
+          Course Successfully Added !
+        </p>
+        <hr />
+        <div className="d-flex justify-content-end">
+          <Button onClick={() => setShow(false)} variant="outline-success">
+            Dismiss
+          </Button>
+        </div>
+      </Alert>
       </div>
     </div>
   );
