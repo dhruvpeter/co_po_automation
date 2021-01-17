@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Table, Form, Button, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 export default function AddCourse() {
   const [CoPoMatrix, setCoPoMatrix] = useState([
@@ -15,9 +14,12 @@ export default function AddCourse() {
   ]);
 
   const [CoPsoMatrix, setCoPsoMatrix] = useState([
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0], 
   ]);
 
   const [course, setCourse] = useState({});
@@ -158,7 +160,7 @@ export default function AddCourse() {
           <thead>
             <tr>
               <th>#</th>
-              {Array.from({ length: 6 }).map((_, index) => (
+              {Array.from({ length: 3 }).map((_, index) => (
                 <th key={index}>PSO{index + 1}</th>
               ))}
             </tr>
@@ -187,9 +189,7 @@ export default function AddCourse() {
 
       <div>
         <Button variant="dark" onClick={Submit}>
-          <Link to="/admin">
-            Save
-          </Link>
+          Save
         </Button>
       </div>
       <div>

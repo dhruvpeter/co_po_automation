@@ -7,7 +7,7 @@ export default function SelectedFaculty() {
 
   const [faculty, setFaculty] = useState({});
   const [admin, setAdmin] = useState('Is an Administrator ?');
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   function Submit(e) {
     e.preventDefault();
