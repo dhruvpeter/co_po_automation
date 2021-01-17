@@ -7,7 +7,8 @@ export default function App() {
   return (
     <div>
       <Admin />
-      {/*<Faculty/>*/}
+      {/* <Faculty/> */}
+      {/* <Login/> */}
     </div>
   );
 }
