@@ -6,21 +6,45 @@ import axios from 'axios';
 
 export default function SelectedCourse() {
   const data = useLocation().state;
-  
-  useEffect(() => {
-    function fetchCourseInfo(){
-      axios.get('https://localhost:5000/api/course', {
-        params:{
-          semester: data.semester,
-          batch: data.passout_year,
-        }
-      })
-    }
-  })
   const [CoPoMatrix, setCoPoMatrix] = useState([
     [1, 2, 3, 1, 2, 3, 2, 1, 1, 1, 1, 1],
     [2, 3, 3, 0, 0, 0, 2, 3, 1, 2, 3, 1],
   ]);
+
+  const [course, setCourse] = useState({
+    name: "Engineerting Physics",
+    code: "PH100",
+    semester: "S1",
+    // faculty: ["Faculty Name", "f2"],
+  });
+  
+  useEffect(() => {
+    async function fetchCourseInfo(){
+      // console.log(data)
+      try {
+        const res = await axios.get(`http://localhost:5000/api/course/${data.course_code}`)
+
+        const courseDetails = {
+          name: res.data.course.course_name, 
+          code: res.data.course.course_code, 
+          semester: res.data.course.semester 
+        }
+        // console.log(courseDetails)
+        setCourse(courseDetails);
+
+        // console.log(res.data.course)
+        // console.log(res.data.copoMatrix)
+        setCoPoMatrix(res.data.copoMatrix);
+
+      } catch(err) {
+        console.log(err);
+      }
+      
+    }
+
+    fetchCourseInfo();
+  }, [])
+  
 
 
 
@@ -29,12 +53,7 @@ export default function SelectedCourse() {
     console.log("Back Button clicked.");
   }
 
-  const [course, setCourse] = useState({
-    name: "Engineerting Physics",
-    code: "PH100",
-    semester: "S1",
-    faculty: ["Faculty Name", "f2"],
-  });
+  
 
   const handlePOChange = (po, index, i) => {
     var resultMatrix = CoPoMatrix;
@@ -92,7 +111,7 @@ export default function SelectedCourse() {
               }}
             />
           </Form.Group>
-          <Form.Group>
+          {/* <Form.Group>
             <Form.Label>Faculty </Form.Label>
             {course.faculty.map((data, index) => (
               <Form.Control
@@ -103,7 +122,7 @@ export default function SelectedCourse() {
                 readOnly
               />
             ))}
-          </Form.Group>
+          </Form.Group> */}
         </Form>
       </div>
 
