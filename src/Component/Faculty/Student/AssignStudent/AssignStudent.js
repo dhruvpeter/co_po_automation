@@ -3,6 +3,19 @@ import { Button } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
 
 export default function AssignStudent() {
+  const [faculty, setFaculty] = useState({
+    id: "TVE18",
+    name: "Sreelal",
+    course: [
+      { code: "PH100", name: "Physics" },
+      { code: "CH", name: "Chemistry" },
+    ],
+  });
+  const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
+  const handleChangeFilterCourse = (event) => {
+    setFilterCourse(event.target.value);
+    console.log(event.target.value);
+  };
   const student = [
     {
       regNo: "TVE18CS017",
@@ -81,15 +94,7 @@ export default function AssignStudent() {
       setStudent(newList);
     },
   };
-  const faculty = {
-    id: "TVE18",
-    name: "Sreelal",
-    course: ["Physics", "Chemistry"],
-  };
-  const [filterCourse, setFilterCourse] = useState(faculty.course[0]);
-  const handleChangeFilterCourse = (event) => {
-    setFilterCourse(event.target.value);
-  };
+
   function Submit(e) {
     // Observe hooks for correct changes
     let selectList = selectedStudents;
@@ -114,8 +119,8 @@ export default function AssignStudent() {
         <label>
           <select value={filterCourse} onChange={handleChangeFilterCourse}>
             {faculty.course.map((data, index) => (
-              <option key={index} value={data}>
-                {data}
+              <option key={index} value={data.code}>
+                {data.name}
               </option>
             ))}
           </select>
