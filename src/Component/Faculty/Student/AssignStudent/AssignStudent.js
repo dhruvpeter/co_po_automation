@@ -6,9 +6,12 @@ import axios from 'axios'
 export default function AssignStudent() {
   const [student, setStudent] = useState([]);
   const [faculty, setFaculty] = useState({
-    id: "2",
+    id: "1007",
     name: "Sreelal",
-    course: ["Physics", "Chemistry"],
+    course: [
+      { code: "CS100", name: "C Programming" },
+      { code: "CS205", name: "Operating System" },
+    ],
   });
   const [filterAdmissionYear, setFilterAdmissionYear] = useState("2018");
 
@@ -23,14 +26,14 @@ export default function AssignStudent() {
         console.log(studentList)
         setStudent(studentList);
 
-        const courses = await axios.get(`http://localhost:5000/api/course?facultyId=${faculty.id}`)
-        const courseNames = [];
-        // console.log(courses.data.courses)
-        courses.data.courses.forEach(course => courseNames.push(course.course_name));
-        console.log(courseNames);
-        // console.log(courses.data.courses)
-        // console.log(courseNames)
-        setFaculty({ ...faculty, course: courseNames })
+        // const courses = await axios.get(`http://localhost:5000/api/course?facultyId=${faculty.id}`)
+        // const courseNames = [];
+        // // console.log(courses.data.courses)
+        // courses.data.courses.forEach(course => courseNames.push(course.course_name));
+        // console.log(courseNames);
+        // // console.log(courses.data.courses)
+        // // console.log(courseNames)
+        // setFaculty({ ...faculty, course: courseNames })
       } catch(err) {
         console.log(err);
       }
