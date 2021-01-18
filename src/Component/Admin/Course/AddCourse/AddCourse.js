@@ -133,7 +133,6 @@ export default function AddCourse() {
                     <Form.Control
                       type="text"
                       name="PO"
-                      placeholder={po}
                       required
                       onChange={(e) => handlePOChange(e.target.value, index, i)}
                     />

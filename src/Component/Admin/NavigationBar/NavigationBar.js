@@ -5,11 +5,11 @@ export default function NavigationBar() {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="/">Admin</Navbar.Brand>
+        <Navbar.Brand href="/admin">Admin</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/admin">Home</Nav.Link>
             <NavDropdown title="Course" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/admin/course/course-details">
                 Course Details
@@ -37,21 +37,6 @@ export default function NavigationBar() {
             <NavDropdown title="Result" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/admin/result/co">CO</NavDropdown.Item>
               <NavDropdown.Item href="/admin/result/po">PO</NavDropdown.Item>
-              <NavDropdown.Item href="/admin/result/pso">PSO</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Survey" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/admin/survey/survey-facultyPO">
-                PO Survey Faculty 
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/admin/survey/survey-facultyPSO">
-                PSO Survey Faculty 
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/admin/survey/survey-employerPO">
-                PO Survey Employer 
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/admin/survey/survey-employerPSO">
-                PSO Survey Employer 
-              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>

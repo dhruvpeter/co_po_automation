@@ -12,15 +12,6 @@ export default function SelectedFaculty() {
     email: location.faculty_email,
   };
 
-  function Submit(e) {
-    e.preventDefault();
-    console.log("Submit Button clicked.");
-  }
-
-  function Delete(e) {
-    e.preventDefault();
-    console.log("Delete Button clicked.");
-  }
 
   function Back(e) {
     e.preventDefault();
@@ -36,6 +27,7 @@ export default function SelectedFaculty() {
               type="text"
               name="id"
               value={faculty.id}
+              readOnly
             />
           </Form.Group>
           <Form.Group>
@@ -44,6 +36,7 @@ export default function SelectedFaculty() {
               type="text"
               name="name"
               value={faculty.name}
+              readOnly
             />
           </Form.Group>
           <Form.Group>
@@ -52,6 +45,7 @@ export default function SelectedFaculty() {
               type="text"
               name="dob"
               value={faculty.department}
+              readOnly
             />
           </Form.Group>
           <Form.Group>
@@ -60,6 +54,7 @@ export default function SelectedFaculty() {
               type="text"
               name="address"
               value={faculty.email}
+              readOnly
             />
           </Form.Group>
         </Form>
@@ -68,12 +63,6 @@ export default function SelectedFaculty() {
       <div>
         <Button variant="dark" onClick={Back}>
           <Link to="/admin/faculty/view-faculty">Back</Link>
-        </Button>{" "}
-        <Button variant="primary" onClick={Delete}>
-          Delete
-        </Button>{" "}
-        <Button variant="primary" onClick={Submit}>
-          Save
         </Button>
       </div>
     </div>

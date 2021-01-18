@@ -5,11 +5,11 @@ export default function NavigationBar() {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="/">Faculty</Navbar.Brand>
+        <Navbar.Brand href="/faculty">Faculty</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/faculty">Home</Nav.Link>
             {/* <NavDropdown title="Selected Course" id="collasible-nav-dropdown">
               <NavDropdown.Item href="">
                 Selected Course
