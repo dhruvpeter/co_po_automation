@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Table } from "react-bootstrap";
 export default function ViewStudent() {
   const [faculty, setFaculty] = useState({
-    id: "TVE18",
+    id: "1007",
     name: "Sreelal",
     course: [
-      { code: "PH100", name: "Physics" },
-      { code: "CH", name: "Chemistry" },
+      { code: "CS100", name: "C Programming" },
+      { code: "CS205", name: "Operating System" },
     ],
   });
   const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
@@ -100,6 +100,7 @@ export default function ViewStudent() {
       </div>
       <div className="filter">
         <label>
+          <span>Batch Year:   </span>
           <select
             value={filterAdmissionYear}
             onChange={handleChangeFilterAdmissionYear}

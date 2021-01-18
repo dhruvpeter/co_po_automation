@@ -41,7 +41,7 @@ export default function NavigationBar() {
           </Nav>
           <Nav>
             {/* <Nav.Link href="/admin/profile">Profile</Nav.Link> */}
-            <Nav.Link href="">Logout</Nav.Link>
+            <Nav.Link href="/">Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

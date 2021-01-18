@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 // import ReactDOM from "react-dom";
 import axios from "axios";
-
+import {Button} from "react-bootstrap"
+import { Link } from "react-router-dom";
+import "./FinalSem.css"
 export default function FinalSem() {
   const [file, setFile] = React.useState("");
   const form = useRef(null);
@@ -55,7 +57,7 @@ export default function FinalSem() {
   //   console.log(event.target.value);
   // };
   return (
-    <div id="container-fluid">
+    <div className="container-fluid">
       <div>
         <h3>Upload Final Sem Exam Marks</h3>
       </div>
@@ -83,10 +85,13 @@ export default function FinalSem() {
         <div>
           <input type="file" name="file" onChange={handleUpload} required />
         </div>
-        <div>
-          <button type="submit" onClick={handleSubmit}>
+        <div className="add-mark-button">
+        <Button variant="dark">
+          <Link to="/faculty/student/add-mark">Back</Link>
+        </Button>{" "}
+          <Button type="submit" onClick={handleSubmit} variant="dark">
             Submit
-          </button>
+          </Button>
         </div>
       </form>
     </div>

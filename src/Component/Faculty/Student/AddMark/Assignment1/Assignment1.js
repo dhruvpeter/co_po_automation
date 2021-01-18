@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
 // import ReactDOM from "react-dom";
 import axios from "axios";
-
+import {Button} from "react-bootstrap"
+import { Link } from "react-router-dom";
+import "./Assignment1.css"
 export default function Assignment1() {
   const [file, setFile] = React.useState("");
   const form = useRef(null);
@@ -36,14 +38,14 @@ export default function Assignment1() {
     }
   }
 
-  const faculty = {
-    id: "TVE18",
+  const [faculty, setFaculty] = useState({
+    id: "1007",
     name: "Sreelal",
     course: [
-      { code: "PH100", name: "Physics" },
-      { code: "CH", name: "Chemistry" },
+      { code: "CS100", name: "C Programming" },
+      { code: "CS205", name: "Operating System" },
     ],
-  };
+  });
 
   const [filterCourse, setFilterCourse] = useState(faculty.course[0].code);
 
@@ -54,7 +56,7 @@ export default function Assignment1() {
     console.log(event.target.value);
   };
   return (
-    <div id="container-fluid">
+    <div className="container-fluid">
       <div>
         <h3>Upload Assignment 1 Marks</h3>
       </div>
@@ -80,13 +82,18 @@ export default function Assignment1() {
           <input type="text" name="batch" required />
         </div>
         <div>
-          <input type="file" name="file" onChange={handleUpload} required />
-        </div>
-        <div>
-          <button type="submit" onClick={handleSubmit}>
+          <div>
+            <input type="file" name="file" onChange={handleUpload} required />
+          </div>
+        <div className="add-mark-button">
+        <Button variant="dark">
+          <Link to="/faculty/student/add-mark">Back</Link>
+        </Button>{" "}
+          <Button type="submit" onClick={handleSubmit} variant="dark">
             Submit
-          </button>
-        </div>
+          </Button>
+        </div></div>
+        
       </form>
     </div>
   );
