@@ -79,6 +79,7 @@ export default function CourseDetails() {
           </select>
         </label>
         <label>
+          <span>Batch Year:  </span>
           <select
             value={filterBatchYear}
             onChange={handleChangeFilterBatchYear}>

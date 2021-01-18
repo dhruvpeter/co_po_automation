@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
-import axios from 'axios'
-
-
+import axios from "axios";
+import { Button } from "react-bootstrap";
+import "./AddStudent.css"
 // It's not clear to me how to trigger updates to the UI
 const useForceUpdate = () => useState()[1];
 
@@ -12,7 +12,7 @@ function AddStudent() {
 
   const form = useRef(null);
 
-  useEffect(e => {
+  useEffect((e) => {
     window.addEventListener("keyup", clickFileInput);
     return () => window.removeEventListener("keyup", clickFileInput);
   });
@@ -43,7 +43,7 @@ function AddStudent() {
       formData.append("passoutYear", filterBatchYear);
       formData.append("deptId", 1);
       // formData.append("internalExamNo", "1");
-      console.log(formData)
+      console.log(formData);
 
       const res = await axios.post(
         "http://localhost:5000/api/student/uploadStudentList",
@@ -77,19 +77,26 @@ function AddStudent() {
 
   return (
     <div className="container-fluid">
-      <div><h3>Add Student</h3></div>
-      <div>        <label>
+      <div>
+        <h3>Add Student</h3>
+      </div>
+      <div>
+        {" "}
+        <label>
+          <span>Batch Year:   </span>
           <select
             value={filterBatchYear}
-            onChange={handleChangeFilterBatchYear}>
+            onChange={handleChangeFilterBatchYear}
+          >
             {batchYear.map((data, index) => (
               <option key={index} value={data}>
                 {data}
               </option>
             ))}
           </select>
-        </label></div>
-      <form ref={form} onSubmit={onSubmit}>
+        </label>
+      </div>
+      <form ref={form} onSubmit={onSubmit} className="file-upload">
         <input
           id="file"
           type="file"
@@ -103,8 +110,10 @@ function AddStudent() {
         />
         <br />
         <br />
-    
-        <button type="submit">Submit</button>
+
+        <Button type="submit" variant="dark">
+          Submit
+        </Button>
       </form>
     </div>
   );
@@ -112,6 +121,5 @@ function AddStudent() {
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<AddStudent />, rootElement);
-
 
 export default AddStudent;

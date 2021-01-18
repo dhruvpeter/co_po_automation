@@ -10,6 +10,8 @@ export default function AssignStudent() {
     name: "Sreelal",
     course: ["Physics", "Chemistry"],
   });
+  const [filterAdmissionYear, setFilterAdmissionYear] = useState("2018");
+
 
   useEffect(() => { 
     async function fetchStudents(){
@@ -25,6 +27,7 @@ export default function AssignStudent() {
         const courseNames = [];
         // console.log(courses.data.courses)
         courses.data.courses.forEach(course => courseNames.push(course.course_name));
+        console.log(courseNames);
         // console.log(courses.data.courses)
         // console.log(courseNames)
         setFaculty({ ...faculty, course: courseNames })
@@ -58,7 +61,6 @@ export default function AssignStudent() {
     "2029",
     "2030",
   ];
-  const [filterAdmissionYear, setFilterAdmissionYear] = useState("2018");
   const handleChangeFilterAdmissionYear = (event) => {
     setFilterAdmissionYear(event.target.value);
   };

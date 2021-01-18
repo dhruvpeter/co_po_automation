@@ -4,8 +4,8 @@ import Home from "../Home/Home";
 import ViewStudent from "../Student/ViewStudent/ViewStudent";
 import AddMark from "../Student/AddMark/AddMark";
 import AssignStudent from "../Student/AssignStudent/AssignStudent";
-import SurveyPO from "../Survey/SurveyPO/SurveyPO";
-import SurveyPSO from "../Survey/SurveyPSO/SurveyPSO";
+// import SurveyPO from "../Survey/SurveyPO/SurveyPO";
+// import SurveyPSO from "../Survey/SurveyPSO/SurveyPSO";
 import Internal1 from "../Student/AddMark/Internal1/Internal1";
 import Internal2 from "../Student/AddMark/Internal2/Internal2";
 import Assignment1 from "../Student/AddMark/Assignment1/Assignment1";
@@ -34,8 +34,8 @@ export default function FacultyLinks() {
           exact
           component={AssignStudent}
         />
-        <Route path="/faculty/survey/surveyPO" exact component={SurveyPO} />
-        <Route path="/faculty/survey/surveyPSO" exact component={SurveyPSO} />
+        {/* <Route path="/faculty/survey/surveyPO" exact component={SurveyPO} />
+        <Route path="/faculty/survey/surveyPSO" exact component={SurveyPSO} /> */}
       </Switch>
     </Router>
   );

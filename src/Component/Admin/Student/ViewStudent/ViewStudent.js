@@ -57,6 +57,7 @@ export default function ViewStudent() {
       </div>
       <div className="filter">
         <label>
+          <span>Batch Year:   </span>
           <select
             value={filterAdmissionYear}
             onChange={handleChangeFilterAdmissionYear}
