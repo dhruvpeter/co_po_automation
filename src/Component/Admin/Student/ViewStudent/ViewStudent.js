@@ -88,7 +88,7 @@ export default function ViewStudent() {
                 <td>{data.name}</td>
                 <td>
                   <Button variant="light">
-                    <Link to="/admin/student/view-student/edit-student">
+                    <Link to={{pathname:"/admin/student/view-student/edit-student", state:data}}>
                       View
                     </Link>
                   </Button>

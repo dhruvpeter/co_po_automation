@@ -1,13 +1,14 @@
 import React,{ useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function SelectedFaculty() {
 
+  const data = useLocation().state;
   const [student, setStudent] = useState({
-    name: "Akhil K P",
-    regno: "TVE18CS000",
+    name: data.name,
+    regno: data.regNo,
   });
 
   const batchYear = [
