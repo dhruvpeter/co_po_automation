@@ -121,6 +121,7 @@ export default function AssignFaculty() {
       </div>
       <div className="filter">
         <label>
+          <span>Semester:  </span>
           <select value={filterSem} onChange={handleChangeFilterSem}>
             {semester.map((data, index) => (
               <option key={index} value={data}>
@@ -131,6 +132,7 @@ export default function AssignFaculty() {
         </label>
         <label>
         <label>
+          <span>Year:  </span>
           <select value={filterYear} onChange={handleChangeFilterYear}>
             {year.map((data, index) => (
               <option key={index} value={data}>
