@@ -9,9 +9,15 @@ export default function App() {
     <div>
       <Router>
         <Switch>
-          <Route exact path='/' component={Login} />
-          <Route path ='/admin' component={Admin} />
-          <Route path ='/faculty' component={Faculty} />
+          <Route exact path='/'>
+            <Login handleName/>
+          </Route>
+          <Route path ='/admin'>
+            <Admin  />
+          </Route>
+          <Route path ='/faculty'>
+            <Faculty/>
+          </Route>
         </Switch>
       </Router>
     </div>

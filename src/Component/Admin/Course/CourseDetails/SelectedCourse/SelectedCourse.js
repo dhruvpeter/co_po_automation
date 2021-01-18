@@ -43,7 +43,7 @@ export default function SelectedCourse() {
     }
 
     fetchCourseInfo();
-  }, [])
+  }, [data])
   
 
 

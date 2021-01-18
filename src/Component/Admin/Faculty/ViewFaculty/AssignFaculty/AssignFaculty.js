@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Table, Form, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 
 export default function AssignFaculty() {
   const data = useLocation().state;
-  const [faculty, setFaculty] = useState({
+  const faculty = {
     id: data.faculty_id,
     name: data.faculty_name,
-  });
+  };
 
   const [filterSem, setFilterSem] = useState(1);
 
@@ -55,25 +55,7 @@ export default function AssignFaculty() {
   const handleChangeCourse =  (event) => {
     setSCourse(event.target.value);
   }
-
-  const selectCourse = (event) => {
-    event.preventDefault();
-    const newItem = [];
-    newItem.year = filterYear;
-
-    let allItems = faculty.course;
-    allItems.push(newItem);
-
-    setFaculty({ ...faculty, course: allItems });
-  };
-
-  const deleteItem = (key) => {
-    const courseAfterDelete = faculty.course.filter(
-      (data, index) => index !== key
-    );
-
-    setFaculty({ ...faculty, course: courseAfterDelete });
-  };
+  
   async function Submit(e) {
     e.preventDefault();
     // console.log("Submit Button clicked.");

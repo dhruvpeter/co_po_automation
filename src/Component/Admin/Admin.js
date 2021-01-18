@@ -5,7 +5,7 @@ import AdminLinks from "./AdminLinks/AdminLinks";
 export default function Admin() {
   return (
     <div>
-      <NavigationBar />
+      <NavigationBar/>
       <AdminLinks />
     </div>
   );
