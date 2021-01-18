@@ -13,11 +13,13 @@ import EditStudent from "../Student/ViewStudent/EditStudent/EditStudent";
 import AddStudent from "../Student/AddStudent/AddStudent";
 import CO from "../Result/CO/CO";
 import PO from "../Result/PO/PO";
-export default function AdminLinks() {
+export default function AdminLinks({user}) {
   return (
     <Router>
       <Switch>
-        <Route path="/admin" exact component={Home} />
+        <Route path="/admin" exact>
+            <Home />
+        </Route>
         <Route
           path="/admin/course/course-details"
           exact
